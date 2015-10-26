@@ -26,6 +26,9 @@ LOCAL_PRIVATE_PLATFORM_APIS := true
 LOCAL_PRIVILEGED_MODULE := true
 LOCAL_MODULE_TAGS := optional
 
+LOCAL_STATIC_JAVA_LIBRARIES := \
+    com.evervolv.platform.internal
+
 LOCAL_PROGUARD_ENABLED := disabled
 
 include $(BUILD_PACKAGE)

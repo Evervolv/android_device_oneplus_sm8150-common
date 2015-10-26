@@ -24,6 +24,8 @@ import android.view.KeyEvent;
 
 import com.android.internal.os.DeviceKeyHandler;
 
+import evervolv.provider.EVSettings;
+
 public class KeyHandler implements DeviceKeyHandler {
     private static final String TAG = KeyHandler.class.getSimpleName();
 
@@ -76,6 +78,12 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     private void doHapticFeedback(VibrationEffect effect) {
+        boolean enabled = EVSettings.System.getInt(mContext.getContentResolver(),
+                EVSettings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, 1) != 0;
+        if (!enabled) {
+            return;
+        }
+
         if (mVibrator != null && mVibrator.hasVibrator()) {
             mVibrator.vibrate(effect);
         }
