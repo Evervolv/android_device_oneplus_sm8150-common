@@ -23,6 +23,8 @@ import android.view.KeyEvent;
 
 import com.android.internal.os.DeviceKeyHandler;
 
+import evervolv.provider.EVSettings;
+
 public class KeyHandler implements DeviceKeyHandler {
     private static final String TAG = KeyHandler.class.getSimpleName();
 
@@ -68,6 +70,9 @@ public class KeyHandler implements DeviceKeyHandler {
             return;
         }
 
-        mVibrator.vibrate(50);
+        boolean enabled = EVSettings.System.getInt(mContext.getContentResolver(),
+                EVSettings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, 1) != 0;
+        if (enabled)
+            mVibrator.vibrate(50);
     }
 }
