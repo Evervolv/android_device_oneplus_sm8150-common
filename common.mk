@@ -190,6 +190,7 @@ PRODUCT_PACKAGES += \
 # Common init scripts
 PRODUCT_PACKAGES += \
     coredump.sh \
+    fstab.persist \
     ftm_power_config.sh \
     init.class_main.sh \
     init.crda.sh \
