@@ -418,7 +418,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.2-service.oneplus_msmnile
+    android.hardware.vibrator@1.3-service.oneplus_msmnile
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \

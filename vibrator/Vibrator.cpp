@@ -90,7 +90,7 @@ static constexpr AwEffect WAVEFORM_THUD_EFFECT {
 namespace android {
 namespace hardware {
 namespace vibrator {
-namespace V1_2 {
+namespace V1_3 {
 namespace implementation {
 
 /*
@@ -134,6 +134,16 @@ Return<Status> Vibrator::setAmplitude(uint8_t) {
     return Status::UNSUPPORTED_OPERATION;
 }
 
+// Methods from ::android::hardware::vibrator::V1_3::IVibrator follow.
+
+Return<bool> Vibrator::supportsExternalControl() {
+    return false;
+}
+
+Return<Status> Vibrator::setExternalControl(bool /*enabled*/) {
+    return Status::UNSUPPORTED_OPERATION;
+}
+
 Return<void> Vibrator::perform(V1_0::Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
     return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
 }
@@ -143,7 +153,11 @@ Return<void> Vibrator::perform_1_1(V1_1::Effect_1_1 effect, EffectStrength stren
     return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
 }
 
-Return<void> Vibrator::perform_1_2(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
+Return<void> Vibrator::perform_1_2(V1_2::Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
+    return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
+}
+
+Return<void> Vibrator::perform_1_3(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
     return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
 }
 
@@ -233,7 +247,7 @@ Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, per
 }
 
 }  // namespace implementation
-}  // namespace V1_2
+}  // namespace V1_3
 }  // namespace vibrator
 }  // namespace hardware
 }  // namespace android
