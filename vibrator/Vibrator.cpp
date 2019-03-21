@@ -225,6 +225,7 @@ Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, per
         case Effect::DOUBLE_CLICK:
             setEffect(WAVEFORM_DOUBLE_CLICK_EFFECT, timeMS);
             break;
+        case Effect::TEXTURE_TICK:
         case Effect::TICK:
             setEffect(WAVEFORM_TICK_EFFECT, timeMS);
             break;
