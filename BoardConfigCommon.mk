@@ -140,6 +140,11 @@ DEVICE_MATRIX_FILE   := $(VENDOR_PATH)/compatibility_matrix.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(VENDOR_PATH)/framework_manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(VENDOR_PATH)/vendor_framework_compatibility_matrix.xml
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(VENDOR_PATH):libinit_msmnile
+TARGET_RECOVERY_DEVICE_MODULES := $(VENDOR_PATH)/init
+TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
+
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
 
