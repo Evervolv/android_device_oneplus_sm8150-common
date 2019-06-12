@@ -35,8 +35,6 @@ LOCAL_SHARED_LIBRARIES := \
     liblog \
     libutils \
 
-LOCAL_STRIP_MODULE := false
-
 include $(BUILD_SHARED_LIBRARY)
 
 include $(call all-makefiles-under, $(LOCAL_PATH))
