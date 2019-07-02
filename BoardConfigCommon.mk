@@ -33,14 +33,12 @@ TARGET_BOOTLOADER_BOARD_NAME := msmnile
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_BOOT_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3 kpti=off
 BOARD_KERNEL_CMDLINE += androidboot.vbmeta.avb_version=1.0
-BOARD_KERNEL_IMAGE_NAME := Image-dtb
+BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8150
 
@@ -82,6 +80,15 @@ USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
 TARGET_USE_QTI_BT_STACK := true
+
+# Bootimage
+ifneq ($(filter Image.gz-dtb Image.lz4-dtb Image-dtb,$(BOARD_KERNEL_IMAGE_NAME)),)
+BOARD_BOOTIMG_HEADER_VERSION := 1
+else
+BOARD_BOOTIMG_HEADER_VERSION := 2
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+endif
+BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 
 # Camera
 TARGET_USES_QTI_CAMERA_DEVICE := true
