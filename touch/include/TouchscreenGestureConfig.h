@@ -19,7 +19,7 @@
 #include "TouchscreenGesture.h"
 
 namespace vendor {
-namespace lineage {
+namespace evervolv {
 namespace touch {
 namespace V1_0 {
 namespace implementation {
@@ -32,5 +32,5 @@ const int TouchscreenGesture::kSupportedGestures =
 }  // namespace implementation
 }  // namespace V1_0
 }  // namespace touch
-}  // namespace lineage
+}  // namespace evervolv
 }  // namespace vendor
