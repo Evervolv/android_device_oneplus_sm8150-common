@@ -3,7 +3,6 @@ bootstrap_go_package {
     pkgPath: "device/oneplus/sm8150-common",
     deps: [
         "blueprint",
-        "blueprint-pathtools",
         "soong",
         "soong-android",
         "soong-cc",
