@@ -38,7 +38,7 @@
 #define DIM_AMOUNT_PATH "/sys/class/drm/card0-DSI-1/dim_alpha"
 
 namespace vendor {
-namespace lineage {
+namespace evervolv {
 namespace biometrics {
 namespace fingerprint {
 namespace inscreen {
@@ -187,5 +187,5 @@ Return<int32_t> FingerprintInscreen::getSize() {
 }  // namespace inscreen
 }  // namespace fingerprint
 }  // namespace biometrics
-}  // namespace lineage
+}  // namespace evervolv
 }  // namespace vendor

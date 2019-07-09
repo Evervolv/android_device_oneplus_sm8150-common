@@ -16,8 +16,8 @@
 cc_binary {
     relative_install_path: "hw",
     defaults: ["hidl_defaults"],
-    name: "vendor.lineage.camera.motor@1.0-service.oneplus_msmnile",
-    init_rc: ["vendor.lineage.camera.motor@1.0-service.oneplus_msmnile.rc"],
+    name: "vendor.evervolv.camera.motor@1.0-service.oneplus_msmnile",
+    init_rc: ["vendor.evervolv.camera.motor@1.0-service.oneplus_msmnile.rc"],
     srcs: ["service.cpp", "CameraMotor.cpp"],
     vendor: true,
     shared_libs: [
@@ -28,6 +28,6 @@ cc_binary {
         "liblog",
         "libhwbinder",
         "libutils",
-        "vendor.lineage.camera.motor@1.0",
+        "vendor.evervolv.camera.motor@1.0",
     ],
 }

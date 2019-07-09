@@ -37,7 +37,7 @@
 #define CAMERA_ID_FRONT "1"
 
 namespace vendor {
-namespace lineage {
+namespace evervolv {
 namespace camera {
 namespace motor {
 namespace V1_0 {
@@ -127,5 +127,5 @@ Return<void> CameraMotor::onDisconnect(const hidl_string& cameraId) {
 }  // namespace V1_0
 }  // namespace motor
 }  // namespace camera
-}  // namespace lineage
+}  // namespace evervolv
 }  // namespace vendor

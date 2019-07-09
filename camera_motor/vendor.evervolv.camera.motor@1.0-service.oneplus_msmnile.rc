@@ -1,0 +1,6 @@
+service vendor.camera-motor-1-0 /vendor/bin/hw/vendor.evervolv.camera.motor@1.0-service.oneplus_msmnile
+    interface vendor.evervolv.camera.motor@1.0::ICameraMotor default
+    class hal
+    user system
+    group system
+    shutdown critical

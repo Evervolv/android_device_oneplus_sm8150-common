@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "vendor.lineage.camera.motor@1.0-service.oneplus_msmnile"
+#define LOG_TAG "vendor.evervolv.camera.motor@1.0-service.oneplus_msmnile"
 
 #include <android-base/logging.h>
 #include <hidl/HidlTransportSupport.h>
@@ -24,8 +24,8 @@
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
-using vendor::lineage::camera::motor::V1_0::ICameraMotor;
-using vendor::lineage::camera::motor::V1_0::implementation::CameraMotor;
+using vendor::evervolv::camera::motor::V1_0::ICameraMotor;
+using vendor::evervolv::camera::motor::V1_0::implementation::CameraMotor;
 
 using android::OK;
 using android::status_t;
