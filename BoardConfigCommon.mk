@@ -134,14 +134,18 @@ TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
 # HIDL
-DEVICE_MATRIX_FILE := $(VENDOR_PATH)/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE += $(VENDOR_PATH)/manifest-qva.xml
+DEVICE_MATRIX_FILE   := $(VENDOR_PATH)/compatibility_matrix.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := $(VENDOR_PATH)/framework_manifest.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(VENDOR_PATH)/vendor_framework_compatibility_matrix.xml
 
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
 
 # Media
 TARGET_PROVIDES_LIBPLATFORMCONFIG := true
+DEVICE_MANIFEST_FILE += $(VENDOR_PATH)/c2_manifest.xml
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
