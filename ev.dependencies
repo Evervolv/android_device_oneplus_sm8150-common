@@ -1,0 +1,12 @@
+[
+ {
+    "repository": "android_device_oneplus_common",
+    "target_path": "device/oneplus/common",
+    "dep_type": "device"
+ },
+ {
+    "repository": "android_kernel_oneplus_sm8150",
+    "target_path": "kernel/oneplus/sm8150",
+    "dep_type": "kernel"
+ }
+]
