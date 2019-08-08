@@ -22,6 +22,10 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-ev
 
+PRODUCT_ENFORCE_RRO_TARGETS := \
+    framework-res
+
+# A/B
 AB_OTA_UPDATER := true
 
 AB_OTA_PARTITIONS += \
@@ -372,8 +376,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service
+    android.hardware.vibrator@1.2-service.oneplus_msmnile
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
