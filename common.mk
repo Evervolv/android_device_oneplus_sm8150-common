@@ -33,7 +33,7 @@ AB_OTA_PARTITIONS += \
     dtbo \
     system \
     vendor \
-    vbmeta \
+    vbmeta
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -450,7 +450,6 @@ PRODUCT_COPY_FILES += \
 
 # WiFi Display
 PRODUCT_PACKAGES += \
-    libaacwrapper \
     libnl
 
 PRODUCT_BOOT_JARS += \
