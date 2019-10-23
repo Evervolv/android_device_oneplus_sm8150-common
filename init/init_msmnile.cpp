@@ -49,18 +49,24 @@ constexpr const char* BUILD_INC_VERSION[] = {
         "1910280100",
         "1910280100",
         "1910280100",
+        "1911061831",
+        "1910120055",
 };
 
 constexpr const char* BUILD_DEVICE[] = {
         "OnePlus7",
         "OnePlus7Pro",
         "OnePlus7ProNR",
+        "OnePlus7T",
+        "OnePlus7TPro",
 };
 
 constexpr const char* BUILD_VARIANT[] = {
         "OnePlus7",
         "OnePlus7Pro",
         "OnePlus7ProNR",
+        "OnePlus7T",
+        "OnePlus7TPro_EEA",
 };
 
 void property_override(char const prop[], char const value[]) {
@@ -92,7 +98,7 @@ void load_props(const char* model, int id) {
     snprintf(fingerprint, PROP_VALUE_MAX, "OnePlus/%s/%s:10/%s/%s:user/release-keys",
         BUILD_VARIANT[id], BUILD_DEVICE[id], BUILD_ID, BUILD_INC_VERSION[id]);
 
-    strcpy (variant, "GM");
+    strcpy (variant, id > 2 ? "HD" : "GM");
     strcat (variant, model);
 
     for (const auto& source : RO_PROP_SOURCES) {
@@ -110,6 +116,7 @@ void load_props(const char* model, int id) {
 
 void vendor_load_properties() {
     int project_name = stoi(android::base::GetProperty("ro.boot.project_name", ""));
+    bool is_7t = project_name >= 18865;
 
     switch (project_name){
         case 18827:
@@ -119,14 +126,14 @@ void vendor_load_properties() {
         case 18831:
         case 19861:
             /* T-Mobile */
-            load_props("1915", 1);
+            load_props("1915", is_7t ? 4 : 1);
             break;
         default:
             int rf_version = stoi(android::base::GetProperty("ro.boot.rf_version", ""));
-            bool is_pro = project_name != 18857;
-            int id = 0;
+            bool is_pro = project_name != 18857 && project_name != 18865;
+            int id = is_7t ? 3 : 0;
             if (is_pro) {
-                id = 1;
+                id = is_7t ? 4 : 1;
             }
             switch (rf_version){
                 case 1:
