@@ -7,8 +7,17 @@ binder_call(hal_audio_default, hal_sensors_default)
 # Allow hal_audio_default to find hal_sensors_hwservice
 allow hal_audio_default hal_sensors_hwservice:hwservice_manager find;
 
+# Allow hal_audio_default to find hal_param_hwservice
+allow hal_audio_default hal_param_hwservice:hwservice_manager find;
+
 # Allow hal_audio_default to read and write to ultrasound_device
 allow hal_audio_default ultrasound_device:chr_file rw_file_perms;
 
 # Allow hal_audio_default to read files in mnt_vendor_file
 r_dir_file(hal_audio_default, mnt_vendor_file)
+
+# Allow hal_audio_default to read vendor properties
+get_prop(hal_audio_default, vendor_audio_prop)
+
+# Allow hal_audio_default to read sys files
+allow hal_audio_default sysfs:file read;
