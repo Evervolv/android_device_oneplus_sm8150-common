@@ -584,14 +584,6 @@ vendor/lib64/unnhal-acc-hvx.so
 
 # NFC
 system/etc/nfcee_access.xml
--system_ext/app/NxpNfcNci/NxpNfcNci.apk;OVERRIDES=NfcNci
-system_ext/etc/permissions/com.nxp.nfc.xml
-system_ext/framework/com.nxp.nfc.jar
-system_ext/lib64/libnxpnfc-nci.so
-system_ext/lib64/libnxpnfc_nci_jni.so
-vendor/bin/hw/android.hardware.nfc@1.2-service
-vendor/etc/init/android.hardware.nfc@1.2-service.rc
-vendor/etc/permissions/com.nxp.mifare.xml
 vendor/etc/libese-nxp.conf
 vendor/etc/libnfc-nci.conf
 vendor/etc/libnfc-nci_beijingbus.conf
@@ -625,14 +617,6 @@ vendor/etc/libnfc-nxp_wuhantong.conf
 vendor/etc/libnfc-nxp_yangchengtong.conf
 vendor/etc/libnfc-nxp_zhengzhoubus.conf
 vendor/lib/libpn553_fw.so
-vendor/lib64/hw/android.hardware.nfc@1.0-impl.so
-vendor/lib64/ese_client.so
-vendor/lib64/ese_spi_nxp.so
-vendor/lib64/hal_libnfc.so
-vendor/lib64/libchrome.so
-vendor/lib64/nfc_nci_nxp.so
-vendor/lib64/nfc_nci_nxp.so
-vendor/lib64/vendor.nxp.eventprocessor@1.0.so
 
 # OMX
 vendor/lib/libAlacSwDec.so
