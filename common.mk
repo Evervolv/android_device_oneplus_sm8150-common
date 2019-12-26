@@ -238,6 +238,12 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.allocator@1.0.vendor \
     vendor.qti.hardware.display.mapper@1.0.vendor
 
+# Display calibration data
+PRODUCT_PACKAGES += \
+    qdcm_calib_data_samsung_dsc_cmd_mode_oneplus_dsi_panel.xml \
+    qdcm_calib_data_samsung_s6e3fc2x01_cmd_mode_dsi_panel.xml \
+    qdcm_calib_data_samsung_sofef03f_m_fhd_cmd_mode_dsc_dsi_panel.xml
+
 # Doze
 PRODUCT_PACKAGES += \
     OnePlusDoze
