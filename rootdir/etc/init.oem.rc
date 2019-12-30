@@ -104,7 +104,7 @@ on boot
     chmod 0666 /proc/touchpanel/nxd_detect
     chown nfc nfc /proc/touchpanel/nxd_detect
     # chmod 0666 /sys/class/drm/card0-DSI-1/ffc_state
-    chmod 0666 /dev/dash/
+    chmod 0660 /dev/dash/
     restorecon  /dev/dash
     #felix 2019/05/16 add for qsee_log tz_log
     chmod 0666 /proc/tzdbg/qsee_log

@@ -58,7 +58,7 @@ on charger
     enable vendor.qcom-usb-sh
     start vendor.qcom-usb-sh
     setprop sys.usb.config mass_storage
-    start dashd
+    start vendor.dashd
 
 on boot
     write /sys/class/android_usb/android0/iSerial ${ro.serialno}
