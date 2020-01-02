@@ -16,6 +16,7 @@
 cc_binary {
     name: "vendor.evervolv.touch@1.0-service.oneplus_msmnile",
     init_rc: ["vendor.evervolv.touch@1.0-service.oneplus_msmnile.rc"],
+    vintf_fragments: ["vendor.evervolv.touch@1.0-service.oneplus_msmnile.xml"],
     defaults: ["hidl_defaults"],
     relative_install_path: "hw",
     srcs: ["service.cpp", "TouchscreenGesture.cpp"],
