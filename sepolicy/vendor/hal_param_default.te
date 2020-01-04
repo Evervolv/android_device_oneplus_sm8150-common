@@ -18,3 +18,6 @@ allow hal_param_default param_device:chr_file rw_file_perms;
 # Allow hal_param_default to read project info
 allow hal_param_default sysfs_project_info:dir search;
 allow hal_param_default sysfs_project_info:file r_file_perms;
+
+# Allow read to hal_param_default device and read/write to property socket
+allow hal_param_default property_socket:sock_file write;
