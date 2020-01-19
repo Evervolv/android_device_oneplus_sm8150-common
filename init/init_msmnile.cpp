@@ -51,6 +51,7 @@ constexpr const char* BUILD_INC_VERSION[] = {
         "1910280100",
         "1911061831",
         "1910120055",
+        "1911061831",
 };
 
 constexpr const char* BUILD_DEVICE[] = {
@@ -59,6 +60,7 @@ constexpr const char* BUILD_DEVICE[] = {
         "OnePlus7ProNR",
         "OnePlus7T",
         "OnePlus7TPro",
+        "OnePlus7TProNR",
 };
 
 constexpr const char* BUILD_VARIANT[] = {
@@ -67,6 +69,7 @@ constexpr const char* BUILD_VARIANT[] = {
         "OnePlus7ProNR",
         "OnePlus7T",
         "OnePlus7TPro_EEA",
+        "OnePlus7TProNR",
 };
 
 void property_override(char const prop[], char const value[]) {
@@ -120,13 +123,16 @@ void vendor_load_properties() {
 
     switch (project_name){
         case 18827:
-            /* 5G */
+            /* 5G Europe */
             load_props("1920", 2);
             break;
         case 18831:
-        case 19861:
             /* T-Mobile */
-            load_props("1915", is_7t ? 4 : 1);
+            load_props("1915", 1);
+            break;
+        case 19861:
+            /* T-Mobile 5G McLaren */
+            load_props("1925", 5);
             break;
         default:
             int rf_version = stoi(android::base::GetProperty("ro.boot.rf_version", ""));
