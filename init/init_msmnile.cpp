@@ -47,29 +47,21 @@ constexpr const char* BUILD_ID = "QKQ1.190716.003";
 
 constexpr const char* BUILD_INC_VERSION[] = {
         "1910280100",
-        "1910280100",
-        "1910280100",
-        "1911061831",
-        "1910120055",
         "1911061831",
 };
 
 constexpr const char* BUILD_DEVICE[] = {
         "OnePlus7",
         "OnePlus7Pro",
-        "OnePlus7ProNR",
         "OnePlus7T",
         "OnePlus7TPro",
-        "OnePlus7TProNR",
 };
 
 constexpr const char* BUILD_VARIANT[] = {
         "OnePlus7",
         "OnePlus7Pro",
-        "OnePlus7ProNR",
         "OnePlus7T",
-        "OnePlus7TPro_EEA",
-        "OnePlus7TProNR",
+        "OnePlus7TPro",
 };
 
 void property_override(char const prop[], char const value[]) {
@@ -94,14 +86,15 @@ void load_props(const char* model, int id) {
     char variant[7];
     char description[PROP_VALUE_MAX+1];
     char fingerprint[PROP_VALUE_MAX+1];
+    bool is_7t = id > 1;
 
     snprintf(description, PROP_VALUE_MAX, "%s-user 10 %s %s release-keys",
-        BUILD_DEVICE[id], BUILD_ID, BUILD_INC_VERSION[id]);
+        BUILD_DEVICE[id], BUILD_ID, BUILD_INC_VERSION[is_7t ? 1 : 0]);
 
     snprintf(fingerprint, PROP_VALUE_MAX, "OnePlus/%s/%s:10/%s/%s:user/release-keys",
-        BUILD_VARIANT[id], BUILD_DEVICE[id], BUILD_ID, BUILD_INC_VERSION[id]);
+        BUILD_VARIANT[id], BUILD_DEVICE[id], BUILD_ID, BUILD_INC_VERSION[is_7t ? 1 : 0]);
 
-    strcpy (variant, id > 2 ? "HD" : "GM");
+    strcpy (variant, is_7t ? "HD" : "GM");
     strcat (variant, model);
 
     for (const auto& source : RO_PROP_SOURCES) {
@@ -124,7 +117,7 @@ void vendor_load_properties() {
     switch (project_name){
         case 18827:
             /* 5G Europe */
-            load_props("1920", 2);
+            load_props("1920", 1);
             break;
         case 18831:
             /* T-Mobile */
@@ -132,14 +125,14 @@ void vendor_load_properties() {
             break;
         case 19861:
             /* T-Mobile 5G McLaren */
-            load_props("1925", 5);
+            load_props("1925", 3);
             break;
         default:
             int rf_version = stoi(android::base::GetProperty("ro.boot.rf_version", ""));
             bool is_pro = project_name != 18857 && project_name != 18865;
-            int id = is_7t ? 3 : 0;
+            int id = is_7t ? 2 : 0;
             if (is_pro) {
-                id = is_7t ? 4 : 1;
+                id = is_7t ? 3 : 1;
             }
             switch (rf_version){
                 case 1:
