@@ -660,15 +660,6 @@ vendor/lib/libmulawdec.so
 vendor/lib/libsmwrapper.so
 vendor/lib/libjnihelper.so
 
-# Machine learning
-vendor/lib/libnpu.so
-vendor/lib/libopenvx.so
-vendor/lib64/hw/vendor.qti.hardware.mlshal@1.0-impl.so
-vendor/lib64/libnpu.so
-vendor/lib64/libopenvx.so
-vendor/lib64/vendor.qti.hardware.mlshal@1.0-halimpl.so
-vendor/lib64/vendor.qti.hardware.mlshal@1.0.so
-
 # Media
 vendor/bin/hw/vendor.qti.media.c2@1.0-service
 vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
