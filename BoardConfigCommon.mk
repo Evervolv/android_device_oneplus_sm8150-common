@@ -95,7 +95,7 @@ TARGET_USES_QTI_CAMERA_DEVICE := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # FOD
-TARGET_SURFACEFLINGER_FOD_LIB := //hardware/oneplus:libfod_extension.oneplus
+TARGET_SURFACEFLINGER_FOD_LIB := //device/oneplus/common:libfod_extension.oneplus
 
 # Display
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
