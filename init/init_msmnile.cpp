@@ -47,21 +47,32 @@ constexpr const char* BUILD_ID = "QKQ1.190716.003";
 
 constexpr const char* BUILD_INC_VERSION[] = {
         "2003130756",
+        "2003130756",
+        "2002141334",
+        "1912011427",
         "2003130919",
+        "2003130919",
+        "1912042002",
 };
 
 constexpr const char* BUILD_DEVICE[] = {
         "OnePlus7",
         "OnePlus7Pro",
+        "OnePlus7ProNR",
+        "OnePlus7ProTMO",
         "OnePlus7T",
         "OnePlus7TPro",
+        "OnePlus7TProNR",
 };
 
 constexpr const char* BUILD_VARIANT[] = {
         "OnePlus7",
         "OnePlus7Pro",
+        "OnePlus7ProNR_EEA",
+        "OnePlus7ProTMO",
         "OnePlus7T",
         "OnePlus7TPro",
+        "OnePlus7TProNR",
 };
 
 void property_override(char const prop[], char const value[]) {
@@ -86,15 +97,14 @@ void load_props(const char* model, int id) {
     char variant[7];
     char description[PROP_VALUE_MAX+1];
     char fingerprint[PROP_VALUE_MAX+1];
-    bool is_7t = id > 1;
 
     snprintf(description, PROP_VALUE_MAX, "%s-user 10 %s %s release-keys",
-        BUILD_DEVICE[id], BUILD_ID, BUILD_INC_VERSION[is_7t ? 1 : 0]);
+        BUILD_DEVICE[id], BUILD_ID, BUILD_INC_VERSION[id]);
 
     snprintf(fingerprint, PROP_VALUE_MAX, "OnePlus/%s/%s:10/%s/%s:user/release-keys",
-        BUILD_VARIANT[id], BUILD_DEVICE[id], BUILD_ID, BUILD_INC_VERSION[is_7t ? 1 : 0]);
+        BUILD_VARIANT[id], BUILD_DEVICE[id], BUILD_ID, BUILD_INC_VERSION[id]);
 
-    strcpy (variant, is_7t ? "HD" : "GM");
+    strcpy (variant, id > 3 ? "HD" : "GM");
     strcat (variant, model);
 
     for (const auto& source : RO_PROP_SOURCES) {
@@ -112,27 +122,26 @@ void load_props(const char* model, int id) {
 
 void vendor_load_properties() {
     int project_name = stoi(android::base::GetProperty("ro.boot.project_name", ""));
-    bool is_7t = project_name >= 18865;
-
     switch (project_name){
         case 18827:
             /* 5G Europe */
-            load_props("1920", 1);
+            load_props("1920", 2);
             break;
         case 18831:
             /* T-Mobile */
-            load_props("1915", 1);
+            load_props("1915", 3);
             break;
         case 19861:
             /* T-Mobile 5G McLaren */
-            load_props("1925", 3);
+            load_props("1925", 6);
             break;
         default:
             int rf_version = stoi(android::base::GetProperty("ro.boot.rf_version", ""));
             bool is_pro = project_name != 18857 && project_name != 18865;
-            int id = is_7t ? 2 : 0;
+            bool is_7t = project_name >= 18865;
+            int id = is_7t ? 4 : 0;
             if (is_pro) {
-                id = is_7t ? 3 : 1;
+                id = is_7t ? 5 : 1;
             }
             switch (rf_version){
                 case 1:
@@ -147,12 +156,8 @@ void vendor_load_properties() {
                     /* Europe */
                     load_props(is_pro ? "1913" : "1903", id);
                     break;
-                case 5:
-                    /* Global / US Unlocked */
-                    load_props(is_pro ? "1917" : "1907", id);
-                    break;
                 default:
-                    /* Generic*/
+                    /* Global / US Unlocked */
                     load_props(is_pro ? "1917" : "1907", id);
                     break;
             }
