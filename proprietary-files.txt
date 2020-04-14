@@ -406,18 +406,17 @@ vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so
 vendor/lib64/libdpmqmihal.so
 
 # DRM
-vendor/bin/hw/vendor.oneplus.hardware.drmkey@1.0-service
-vendor/bin/hw/vendor.oneplus.hardware.hdcpkey@1.0-service
 vendor/bin/qseecomd
-vendor/etc/gpfspath_oem_config.xml
 vendor/etc/init/qseecomd.rc
-vendor/etc/init/vendor.oneplus.hardware.drmkey@1.0-service.rc
-vendor/etc/init/vendor.oneplus.hardware.hdcpkey@1.0-service.rc
+vendor/etc/gpfspath_oem_config.xml
+vendor/lib/libbase64.so
 vendor/lib/libcpion.so
+vendor/lib/libcppf.so
 vendor/lib/libdrmfs.so
 vendor/lib/liboemcrypto.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librmp.so
+vendor/lib64/libbase64.so
 vendor/lib64/libcpion.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
@@ -432,11 +431,10 @@ vendor/lib64/librpmb.so
 vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libSecureUILib.so
+vendor/lib64/libsi.so
 vendor/lib64/libspl.so
 vendor/lib64/libssd.so
 vendor/lib64/libStDrvInt.so
-vendor/lib64/vendor.oneplus.hardware.drmkey@1.0.so
-vendor/lib64/vendor.oneplus.hardware.hdcpkey@1.0.so
 
 # DRM - Widevine
 vendor/bin/hw/android.hardware.drm@1.2-service.widevine
@@ -488,12 +486,12 @@ vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 
 # GPS
-vendor/bin/xtwifi-client|bd83223bc256120091e138e7b58e0c15ffe78069
-vendor/bin/xtwifi-inet-agent|45a5db235eb12c322b9ef65797d1650772fbb0b6
 vendor/bin/loc_launcher|9623f5f96bd262abc5c883610feca43a5ab214b3
 vendor/bin/lowi-server|30879dcd5ad1d5fa135f1b6cd7a429f8d27d3bfd
 vendor/bin/slim_daemon|8e90b1f4f62e38e1d64fe1d7e8f1786311e904f8
 vendor/bin/xtra-daemon|19668186cc2938d756bf754170701fb8a1de7110
+vendor/bin/xtwifi-client|bd83223bc256120091e138e7b58e0c15ffe78069
+vendor/bin/xtwifi-inet-agent|45a5db235eb12c322b9ef65797d1650772fbb0b6
 vendor/etc/cacert_location.pem|0789bf799c7e45d352a83e2f79ddb0cea86db85b
 vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml
 vendor/etc/xtra_root_cert.pem
@@ -502,12 +500,12 @@ vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so|062a712062a4a57030499f2d4882e22cf56f
 vendor/lib64/libaoa.so|21792cf23cf01fdba8c5f9288f838224d73f1a52
 vendor/lib64/libdataitems.so|eed59b07b2b7d02dd9ac008f341d7c50dccf7d5d
 vendor/lib64/libgdtap.so|5fc6beb99cf918967fd1f3d0cac8b25113d4175a
-vendor/lib64/libgnsspps.so
+vendor/lib64/libgnsspps.so|b854526890bf64915fdb42731857f7e6756aaad7
 vendor/lib64/libizat_client_api.so|2343abbe03743adb24a79762feb89a2174b9b838
 vendor/lib64/libizat_core.so|714999077c70dd20174ef70df6620d2ee8446b2d
 vendor/lib64/liblbs_core.so|2e748cda51755904121fd70e11dab46b12694d1b
-vendor/lib64/libloc_api_v02.so
-vendor/lib64/libloc_socket.so
+vendor/lib64/libloc_api_v02.so|cd1d77bdcd12a85fdaba0431aa08dffed3b57909
+vendor/lib64/libloc_socket.so|a179040a8d418ae359b164c154523dff78392e42
 vendor/lib64/liblocationservice.so|a1296e101c9294aa534c5f9a0033e47c86b563de
 vendor/lib64/liblocationservice_glue.so|7e11fbd073dd9efb49718366e989f951d2a1af2a
 vendor/lib64/liblowi_client.so|e89ab4e233e85d9d01c5073ffea1a7b7eeeab68a
@@ -515,12 +513,12 @@ vendor/lib64/liblowi_wifihal.so|fd25fc9fd7973b5821d45b735e274d886c9b62e0
 vendor/lib64/libqdma_file_agent.so|bb7b35dae09848f2fceddaac17344d2b7ef4e944
 vendor/lib64/libslimclient.so|af8b04d46f76a0ac5c174d0f09afa7b8fd3ec4c0
 vendor/lib64/libxtadapter.so|14488cedaa1b375f99f973d166674b15f47ad5dc
-vendor/lib64/vendor.qti.gnss@1.0.so
-vendor/lib64/vendor.qti.gnss@1.1.so
-vendor/lib64/vendor.qti.gnss@1.2.so
-vendor/lib64/vendor.qti.gnss@2.0.so
-vendor/lib64/vendor.qti.gnss@2.1.so
-vendor/lib64/vendor.qti.gnss@3.0.so
+vendor/lib64/vendor.qti.gnss@1.0.so|5b5a503d27a9eb6371941cbed71b160d67983dbb
+vendor/lib64/vendor.qti.gnss@1.1.so|f97415b13145e3a76e821d754650aa1a2696824d
+vendor/lib64/vendor.qti.gnss@1.2.so|fa5bf9caf30f72e6ca13b8edd85d06dd76a807f5
+vendor/lib64/vendor.qti.gnss@2.0.so|bbbfa8efc140ef3ee2594137e09f76212b732397
+vendor/lib64/vendor.qti.gnss@2.1.so|a395bb7d4df874c0e0efadf8ef51d3510afedad3
+vendor/lib64/vendor.qti.gnss@3.0.so|ff1733d10abd97fa4381c798ae74b4cc5dac39e8
 vendor/lib64/vendor.qti.gnss@3.0-service.so|e799172a7113a35b1f17a8c5999713286c104d11
 
 # Graphics
@@ -556,27 +554,13 @@ vendor/lib64/libllvm-qcom.so
 vendor/lib64/libOpenCL.so
 
 # Graphics (DRM)
-vendor/lib/libsdedrm.so
 vendor/lib64/libsdedrm.so
 
 # Graphics (HDR)
-vendor/etc/hdr_config.cfg
-vendor/etc/sdr_config.cfg
-vendor/lib/libhdr_tm.so
 vendor/lib64/libhdr_tm.so
 
 # Graphics (SDM)
--product/lib/libsdm-disp-apis.qti.so
 -product/lib64/libsdm-disp-apis.qti.so
-vendor/lib/libdpps.so
-vendor/lib/libqseed3.so
-vendor/lib/libsdm-color.so
-vendor/lib/libsdm-colormgr-algo.so
-vendor/lib/libsdm-diag.so
--vendor/lib/libsdm-disp-vndapis.so
-vendor/lib/libsdmcore.so
-vendor/lib/libsdmextension.so
-vendor/lib/libtinyxml2_1.so
 vendor/lib64/libdpps.so
 vendor/lib64/libqseed3.so
 vendor/lib64/libsdm-color.so
@@ -688,7 +672,6 @@ vendor/lib64/vendor.qti.hardware.mlshal@1.0.so
 # Media
 vendor/bin/hw/vendor.qti.media.c2@1.0-service
 vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
-vendor/etc/system_properties.xml
 vendor/lib/libAlacSwDec.so
 vendor/lib/libApeSwDec.so
 vendor/lib/libdsd2pcm.so
@@ -713,12 +696,15 @@ vendor/lib/libOmxVideoDSMode.so
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libqcbor.so
 vendor/lib/libqcodec2.so
+vendor/lib/libstagefright_soft_ac4dec.so
+vendor/lib/libstagefright_soft_ddpdec.so
 vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
 vendor/lib64/libFlacSwDec.so
 vendor/lib64/libI420colorconvert.so
 vendor/lib64/libmm-color-convertor.so
 vendor/lib64/libMpeg4SwEncoder.so
+vendor/lib64/libOmxAacDec.so
 vendor/lib64/libOmxAlacDec.so
 vendor/lib64/libOmxAlacDecSw.so
 vendor/lib64/libOmxAmrDec.so
@@ -732,6 +718,7 @@ vendor/lib64/libOmxSwVdec.so
 vendor/lib64/libOmxSwVencMpeg4.so
 vendor/lib64/libOmxWmaDec.so
 vendor/lib64/libqcodec2.so
+vendor/lib64/libstagefright_soft_qtiflacdec.so
 
 # Media (VPP)
 product/lib/vendor.qti.hardware.vpp@1.1.so
@@ -827,12 +814,6 @@ product/lib64/vendor.display.color@1.2.so
 product/lib64/vendor.display.color@1.3.so
 vendor/bin/hw/vendor.display.color@1.0-service
 vendor/etc/init/vendor.display.color@1.0-service.rc
-vendor/lib/libdisp-aba.so
-vendor/lib/libdisplayqos.so
-vendor/lib/vendor.display.color@1.0.so
-vendor/lib/vendor.display.color@1.1.so
-vendor/lib/vendor.display.color@1.2.so
-vendor/lib/vendor.display.postproc@1.0.so
 vendor/lib64/libdisp-aba.so
 vendor/lib64/libdisplayqos.so
 vendor/lib64/vendor.display.color@1.0.so
@@ -840,14 +821,6 @@ vendor/lib64/vendor.display.color@1.1.so
 vendor/lib64/vendor.display.color@1.2.so
 vendor/lib64/vendor.display.color@1.3.so
 vendor/lib64/vendor.display.postproc@1.0.so
-
-# Qualcomm Display Utils
-vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
-vendor/bin/qdcmss
-vendor/etc/init/qdcmss.rc
-vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc
-vendor/lib/vendor.qti.hardware.qdutils_disp@1.0.so
-vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
 
 # Qualcomm Hardware Factory
 vendor/bin/hw/vendor.qti.hardware.factory@1.0-service
@@ -857,8 +830,6 @@ vendor/lib64/vendor.qti.hardware.factory@1.0.so
 vendor/lib64/vendor.qti.hardware.factory@1.1.so
 
 # Qualcomm MSM Interface
-etc/permissions/qti_libpermissions.xml|ef3c88495f2f61a2d16e1445113a9d80f8db0e0a
-etc/permissions/qti_permissions.xml
 lib/libdiag_system.so
 lib64/libdiag_system.so
 vendor/bin/irsc_util
@@ -909,8 +880,6 @@ vendor/lib64/libQTEEConnector_vendor.so
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 
 # Radio
-etc/permissions/privapp-permissions-qti.xml
-etc/sysconfig/qti_whitelist.xml
 framework/qcnvitems.jar
 -product/app/QtiTelephonyService/QtiTelephonyService.apk
 product/etc/permissions/embms.xml
@@ -1106,7 +1075,6 @@ vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 # Servicetracker
 vendor/bin/hw/vendor.qti.hardware.servicetracker@1.0-service
 vendor/etc/init/vendor.qti.hardware.servicetracker@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.servicetracker@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.servicetracker@1.0-impl.so
 
 # Snapdragon Computer Vision Engine
@@ -1160,7 +1128,6 @@ vendor/lib64/vendor.qti.hardware.soter@1.0.so
 
 # Thermal
 vendor/bin/thermal-engine
-vendor/etc/thermal-engine.conf
 -vendor/lib64/libthermalclient.so
 
 # Time services
@@ -1198,7 +1165,6 @@ vendor/lib64/vendor.oneplus.hardware.translation@1.0.so
 # Trusted User Interface
 vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti
 vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc
-vendor/lib/vendor.qti.hardware.tui_comm@1.0.so
 vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so
 
 # Vibrator firmware
@@ -1291,34 +1257,6 @@ vendor/firmware/wentai24k_rtp.bin
 
 # WiFi
 vendor/bin/cnss-daemon
-vendor/bin/hw/vendor.oneplus.hardware.wifi@1.0-service
-vendor/bin/wifilearner
-vendor/etc/configstore/wigig.xml
-vendor/etc/init/vendor.oneplus.hardware.wifi@1.0-service.rc
-vendor/etc/init/vendor.qti.hardware.wifi.wifilearner@1.0-service.rc
-vendor/etc/init/vendor.qti.hardware.wigig.supptunnel@1.0-service.rc
-vendor/etc/wifi/aoa_cldb_falcon.bin
-vendor/etc/wifi/aoa_cldb_swl14.bin
-vendor/etc/wifi/fstman.ini
-vendor/etc/wifi/sar-vendor-cmd.xml
-vendor/etc/wifi/WCNSS_qcom_cfg_cta.ini
-vendor/etc/wifi/wigig_p2p_supplicant.conf
-vendor/etc/wifi/wigig_supplicant.conf
-vendor/etc/wifi/wpa_supplicant_overlay.conf
-vendor/lib/libwigig_flashaccess.so
-vendor/lib/libwigig_pciaccess.so
-vendor/lib/libwigigsensing.so
-vendor/lib/libwigig_utils.so
-vendor/lib64/libwigig_flashaccess.so
-vendor/lib64/libwigig_pciaccess.so
-vendor/lib64/libwigigsensing.so
-vendor/lib64/libwigig_utils.so
-vendor/lib64/vendor.oneplus.hardware.wifi@1.0.so
-vendor/lib64/vendor.oneplus.hardware.wifi@1.1.so
-vendor/lib64/vendor.qti.hardware.wifi.keystore@1.0.so
-vendor/lib64/vendor.qti.hardware.wifi.wifilearner@1.0.so
-vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
-vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 
 # WiFi Display
 bin/wfdservice
