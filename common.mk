@@ -265,9 +265,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service.oneplus_msmnile \
     vendor.evervolv.biometrics.fingerprint.inscreen@1.0-service.oneplus_msmnile \
-    vendor.evervolv.biometrics.fingerprint.inscreen.xml \
-    vendor.oneplus.fingerprint.extension@1.0.vendor \
-    vendor.oneplus.hardware.display@1.0.vendor
+    vendor.evervolv.biometrics.fingerprint.inscreen.xml
 
 # For config.fs
 PRODUCT_PACKAGES += \
