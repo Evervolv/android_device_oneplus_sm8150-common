@@ -287,13 +287,9 @@ PRODUCT_PACKAGES += \
 
 # GPS config files
 PRODUCT_PACKAGES += \
-    apdr.conf \
     flp.conf \
     gps.conf \
-    izat.conf \
-    lowi.conf \
-    sap.conf \
-    xtwifi.conf
+    izat.conf
 
 # Health
 PRODUCT_PACKAGES += \
