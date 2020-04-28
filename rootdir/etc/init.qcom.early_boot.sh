@@ -78,7 +78,7 @@ function set_density_by_fb() {
         elif [ $fb_width -ge 1440 ]; then
            setprop vendor.display.lcd_density 560
         elif [ $fb_width -ge 1080 ]; then
-           setprop vendor.display.lcd_density 420
+           setprop vendor.display.lcd_density 480
         elif [ $fb_width -ge 720 ]; then
            setprop vendor.display.lcd_density 320 #for 720X1280 resolution
         elif [ $fb_width -ge 480 ]; then
@@ -318,8 +318,6 @@ case "$target" in
                 fi
                 ;;
         esac
-        # Temporary hack to refresh kernel 4.19's cache buffers of /system if overlayfs has /system changes
-        ls /system/app /system/priv-app /system/lib64 /system/lib /system/bin
         ;;
     "lito")
         case "$soc_hwplatform" in
@@ -330,8 +328,6 @@ case "$target" in
                 fi
                 ;;
         esac
-        # Temporary hack to refresh kernel 4.19's cache buffers of /system if overlayfs has /system changes
-        ls /system/app /system/priv-app /system/lib64 /system/lib /system/bin
         ;;
     "sdm710" | "msmpeafowl")
         case "$soc_hwplatform" in

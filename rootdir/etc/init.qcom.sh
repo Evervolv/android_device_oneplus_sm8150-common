@@ -324,6 +324,9 @@ case "$target" in
     "lito")
         start_msm_irqbalance_lito
         ;;
+    "atoll")
+        start_msm_irqbalance_atoll
+        ;;
     "msm8937")
         start_msm_irqbalance_8939
         if [ -f /sys/devices/soc0/soc_id ]; then
@@ -423,21 +426,6 @@ case "$target" in
         ;;
 esac
 
-if [ "$buildtype" == "cta" ]; then
-    echo "0" > /sys/module/qpnp_power_on/parameters/long_pwr_dump_enabled
-fi
-
-power_key_dump=`getprop persist.vendor.enable.powerkey.dump`
-default_power_key_dump=`getprop ro.vendor.powerkeydump.enable`
-kernel_power_key_dump=`cat /sys/module/qpnp_power_on/parameters/long_pwr_dump_enabled`
-if [ "$power_key_dump" == "" ]; then
-    if [ "$default_power_key_dump" == "true" ]; then
-        setprop persist.vendor.enable.powerkey.dump 1
-    elif [ "$kernel_power_key_dump" == "1" ]; then
-        setprop persist.vendor.enable.powerkey.dump 1
-    fi
-fi
-
 #
 # Make modem config folder and copy firmware config to that folder for RIL
 #
@@ -457,49 +445,10 @@ if [ ! -f /vendor/firmware_mnt/verinfo/ver_info.txt -o "$prev_version_info" != "
     cp --preserve=m -d /vendor/firmware_mnt/verinfo/ver_info.txt /data/vendor/modem_config/
     cp --preserve=m -d /vendor/firmware_mnt/image/modem_pr/mbn_ota.txt /data/vendor/modem_config/
     # the group must be root, otherwise this script could not add "W" for group recursively
-
-#ifdef VENDOR_EDIT 20180601
-# zhouhanxin add for mbn_ota.txt , 201711277
-    cp -r /system/etc/firmware/mbn_ota/mbn_ota.txt /data/vendor/modem_config/mbn_ota.txt
-#endif VENDOR_END 20180601
     chown -hR radio.root /data/vendor/modem_config/*
 fi
 chmod g-w /data/vendor/modem_config
 setprop ro.vendor.ril.mbn_copy_completed 1
-
-
-oemdump=`getprop persist.vendor.oem.dump`
-oemssrdump=`getprop persist.vendor.oem.ssrdump`
-buildtype=`getprop ro.vendor.build.release_type`
-oemdefaultdump=`getprop persist.vendor.oem.defaultdump`
-default_dump=`getprop ro.vendor.default.dump.enable`
-if [ "$oemdump" == "" ] && [ "$oemssrdump" == "" ]; then
-    if [ "$default_dump" == "true" ]; then
-        setprop persist.vendor.oem.dump 1
-        setprop persist.vendor.oem.ssrdump 0
-    else
-        case "$buildtype" in
-            "release" | "cta")
-               setprop persist.vendor.oem.dump 0
-               setprop persist.vendor.oem.ssrdump 0
-               ;;
-            *)
-               setprop persist.vendor.oem.dump 1
-               setprop persist.vendor.oem.ssrdump 0
-               ;;
-        esac
-    fi
-fi
-
-if [ "$oemdump" != "" ] && [ "$oemssrdump" == "" ]; then
-    setprop persist.vendor.oem.ssrdump 0
-fi
-
-if [ "$default_dump" == "false" ] && [ "$oemdefaultdump" == "" ]; then
-    setprop persist.vendor.oem.dump 0
-    setprop persist.vendor.oem.ssrdump 0
-    setprop persist.vendor.oem.defaultdump 1
-fi
 
 #check build variant for printk logging
 #current default minimum boot-time-default
