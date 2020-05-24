@@ -206,6 +206,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.multisim.config=dsds \
     persist.vendor.data.iwlan.enable=true \
     persist.vendor.radio.5g_mode_pref=0 \
+    persist.vendor.radio.aosp_usr_pref_sel=true \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
     persist.vendor.radio.arfcn_test_mode=3 \
     persist.vendor.radio.bar_fake_gcell=1 \
