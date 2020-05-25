@@ -21,6 +21,7 @@
 #include <hidl/HidlTransportSupport.h>
 #include <fstream>
 
+#define FINGERPRINT_ERROR_CANCELED 5
 #define FINGERPRINT_ACQUIRED_VENDOR 6
 #define FINGERPRINT_ERROR_VENDOR 8
 
@@ -36,7 +37,6 @@
 // This is not a typo by me. It's by OnePlus.
 #define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 #define HBM_ENABLE_PATH "/sys/class/drm/card0-DSI-1/op_friginer_print_hbm"
-#define HBM_MODE_PATH "/sys/class/drm/card0-DSI-1/hbm"
 
 namespace vendor {
 namespace evervolv {
@@ -134,6 +134,7 @@ int brightness_to_alpha(int brightness) {
 FingerprintInscreen::FingerprintInscreen() {
     int i;
     this->mFodCircleVisible = false;
+    this->mIsEnrolling = false;
     this->mVendorFpService = IVendorFingerprintExtensions::getService();
     this->mVendorDisplayService = IOneplusDisplay::getService();
     for (i = 0; i < 21; i++)
@@ -141,31 +142,30 @@ FingerprintInscreen::FingerprintInscreen() {
 }
 
 Return<void> FingerprintInscreen::onStartEnroll() {
+    this->mIsEnrolling = true;
     this->mVendorFpService->updateStatus(OP_DISABLE_FP_LONGPRESS);
     this->mVendorFpService->updateStatus(OP_RESUME_FP_ENROLL);
+    set(HBM_ENABLE_PATH, 1);
 
     return Void();
 }
 
 Return<void> FingerprintInscreen::onFinishEnroll() {
+    this->mIsEnrolling = false;
     this->mVendorFpService->updateStatus(OP_FINISH_FP_ENROLL);
+    set(HBM_ENABLE_PATH, 0);
 
     return Void();
 }
 
 Return<void> FingerprintInscreen::onPress() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 2);
-    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 1);
-    set(HBM_ENABLE_PATH, 1);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 1);
 
     return Void();
 }
 
 Return<void> FingerprintInscreen::onRelease() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
-    set(HBM_ENABLE_PATH, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
 
     return Void();
@@ -181,7 +181,6 @@ Return<void> FingerprintInscreen::onHideFODView() {
     this->mFodCircleVisible = false;
     this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
-    set(HBM_ENABLE_PATH, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
 
     return Void();
@@ -215,7 +214,20 @@ Return<bool> FingerprintInscreen::handleAcquired(int32_t acquiredInfo, int32_t v
 }
 
 Return<bool> FingerprintInscreen::handleError(int32_t error, int32_t vendorCode) {
-    return error == FINGERPRINT_ERROR_VENDOR && vendorCode == 6;
+    switch (error) {
+        case FINGERPRINT_ERROR_CANCELED:
+            // Turn HBM off after canceled fingerprint enrollment
+            if (this->mIsEnrolling && vendorCode == 0) {
+                this->mIsEnrolling = false;
+                set(HBM_ENABLE_PATH, 0);
+            }
+            return false;
+        case FINGERPRINT_ERROR_VENDOR:
+            // Ignore vendorCode 6
+            return vendorCode == 6;
+        default:
+            return false;
+    }
 }
 
 Return<void> FingerprintInscreen::setLongPressEnabled(bool enabled) {
@@ -226,17 +238,7 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool enabled) {
 }
 
 Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
-    int brightness = get(BRIGHTNESS_PATH, 0);
-    int dimAmount = brightness_to_alpha(brightness);
-    int hbmMode = get(HBM_MODE_PATH, 0);
-    // Always return 42 for hbm mode(670)
-    if (hbmMode == 5) {
-        dimAmount = 42;
-    }
-
-    LOG(INFO) << "dimAmount = " << dimAmount;
-
-    return dimAmount;
+    return 0;
 }
 
 Return<bool> FingerprintInscreen::shouldBoostBrightness() {
