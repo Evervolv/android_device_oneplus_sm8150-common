@@ -189,22 +189,37 @@ PRODUCT_PACKAGES += \
 
 # Common init scripts
 PRODUCT_PACKAGES += \
+    coredump.sh \
     fstab.persist \
+    ftm_power_config.sh \
     init.class_main.sh \
+    init.crda.sh \
+    init.mdm.sh \
     init.msm.usb.configfs.rc \
-    init.oneplus.rc \
+    init.oem.debug.rc \
+    init.oem.engineermode.sh \
+    init.oem.rc \
     init.qcom.class_core.sh \
+    init.qcom.coex.sh \
+    init.qcom.crashdata.sh \
     init.qcom.early_boot.sh \
+    init.qcom.efs.sync.sh \
+    init.qcom.factory.rc \
     init.qcom.post_boot.sh \
-    init.qcom.sensors.sh \
     init.qcom.rc \
+    init.qcom.sdio.sh \
+    init.qcom.sensors.sh \
     init.qcom.sh \
-    init.qti.ims.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
+    init.qti.fm.sh \
+    init.qti.ims.sh \
     init.recovery.qcom.rc \
     init.target.rc \
-    ueventd.qcom.rc
+    kmemleak.sh \
+    ueventd.rc \
+    vendor.oem_ftm.rc \
+    vendor.oem_ftm_svc_disable.rc
 
 # Cryptfshw
 PRODUCT_PACKAGES += \

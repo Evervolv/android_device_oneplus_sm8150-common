@@ -133,7 +133,6 @@ firmware_directories /vendor/firmware_mnt/image/ /vendor/firmware/
 /dev/seemplog             0660   system     system
 /dev/pft                  0660   system     drmrpc
 /dev/spcom                0660   system     system
-/dev/spss_utils           0660   system     system
 /dev/sp_kernel            0660   system     system
 /dev/sp_ssr               0660   system     system
 /dev/sp_keymaster         0660   system     system
@@ -152,6 +151,10 @@ firmware_directories /vendor/firmware_mnt/image/ /vendor/firmware/
 /dev/adsprpc-smd-secure   0644   system     system
 /dev/system_health_monitor 0644  radio      system
 /dev/mdss_rotator         0664   system     system
+
+# liochen@BSP, 2016/12/13, Add fastboot oem lock/unlock command
+/dev/block/sda12          0600   system     system
+/dev/block/sda4           0660   root       system
 
 #QDSS
 /dev/byte-cntr            0660   system    oem_2902
@@ -328,9 +331,9 @@ firmware_directories /vendor/firmware_mnt/image/ /vendor/firmware/
 /dev/block/platform/soc/7824900.sdhci/by-name/config    0600   system     system
 /dev/block/platform/soc/7464900.sdhci/by-name/frp       0600   system     system
 /dev/block/platform/soc/624000.ufshc/by-name/frp        0600   system     system
+/dev/block/platform/soc/1d84000.ufshc/by-name/config    0600   system     system
 /dev/block/platform/soc/1da4000.ufshc/by-name/frp       0600   system     system
 /dev/block/platform/soc/c0c4000.sdhci/by-name/frp       0600   system     system
-/dev/block/platform/soc/1d84000.ufshc/by-name/config    0600   system     system
 /dev/block/platform/soc/1d84000.ufshc/by-name/frp       0600   system     system
 /dev/block/platform/soc/7c4000.sdhci/by-name/frp        0600   system     system
 /dev/block/platform/soc/4744000.sdhci/by-name/frp       0600   system     system
@@ -338,10 +341,6 @@ firmware_directories /vendor/firmware_mnt/image/ /vendor/firmware/
 
 # This is temporary while using SD card for initial bring-up
 /dev/block/platform/soc/8804000.sdhci/by-name/frp       0600   system     system
-
-# Add device block for fastboot oem lock/unlock commands
-/dev/block/sda12          0600   system     system
-/dev/block/sda4           0660   root       system
 
 # Kmsg device
 /dev/kmsg                                               0620   root       system
