@@ -46,12 +46,12 @@ constexpr const char* RO_PROP_SOURCES[] = {
 constexpr const char* BUILD_ID = "QKQ1.190716.003";
 
 constexpr const char* BUILD_INC_VERSION[] = {
-        "2003130756",
-        "2003130756",
+        "2005122138",
+        "2005122138",
         "2002141334",
         "1912011427",
-        "2003130919",
-        "2003130919",
+        "2005192100",
+        "2005192100",
         "1912042002",
 };
 
