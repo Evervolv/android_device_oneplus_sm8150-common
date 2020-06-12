@@ -1,5 +1,4 @@
 type hal_cameraHIDL_hwservice, hwservice_manager_type;
-type hal_cameraMDMHIDL_hwservice, hwservice_manager_type;
 type hal_display_hwservice, hwservice_manager_type;
 type hal_dms_hwservice, hwservice_manager_type;
 type hal_drmkey_hwservice, hwservice_manager_type;
@@ -9,5 +8,4 @@ type nxpese_hwservice, hwservice_manager_type;
 type nxpnfc_hwservice, hwservice_manager_type;
 type hal_param_hwservice, hwservice_manager_type;
 type hal_rpmb_hwservice, hwservice_manager_type;
-type hal_translation_hwservice, hwservice_manager_type;
 type hal_wiredse_hwservice, hwservice_manager_type;

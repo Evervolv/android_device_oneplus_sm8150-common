@@ -22,9 +22,3 @@ set_prop(hal_camera_default, vendor_camera_prop)
 
 # Allow hal_camera_default to read sys files
 allow hal_camera_default sysfs:file read;
-
-# Allow hal_camera_default to find hal_cameraMDMHIDL_hwservice
-allow hal_camera_default hal_cameraMDMHIDL_hwservice:hwservice_manager find;
-
-# Allow hal_camera_default to find hal_translation_hwservice
-allow hal_camera_default hal_translation_hwservice:hwservice_manager find;
