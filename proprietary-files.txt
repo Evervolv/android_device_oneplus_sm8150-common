@@ -95,6 +95,7 @@ vendor/lib64/libbt-hidlclient.so
 
 # Bluetooth Audio
 vendor/lib/btaudio_offload_if.so
+vendor/lib/libbthost_if.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
