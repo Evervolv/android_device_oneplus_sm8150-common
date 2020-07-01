@@ -11,8 +11,7 @@ vendor/lib64/libmdsprpc.so
 vendor/lib64/libsdsprpc.so
 
 # ADSP Modules
-vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so
-vendor/lib/rfsa/adsp/capi_v2_aptX_HD.so
+vendor/lib/rfsa/adsp/capi_v2_aptX_CLHDAD_Encoder.so
 vendor/lib/rfsa/adsp/libapps_mem_heap.so
 vendor/lib/rfsa/adsp/libarcsoft_dualcam_refocus_skel.so
 vendor/lib/rfsa/adsp/libarcsoft_hdrplus_hvx_skel.so
@@ -111,6 +110,11 @@ vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so
 
 # Camera
+framework/vendor.oneplus.camera.CameraMDMHIDL-V1.0-java.jar
+lib64/libCameraMDMHelper.so
+lib64/vendor.oneplus.camera.CameraMDMHIDL@1.0-adapter-helper.so
+lib64/vendor.oneplus.camera.CameraMDMHIDL@1.0.so
+vendor/bin/hw/vendor.oneplus.camera.CameraHIDL@1.0-service
 vendor/bin/vl53l1_daemon_main
 vendor/etc/camera/arccali.bin
 vendor/etc/camera/ashdr/iso617_4608x3456.ncf
@@ -237,7 +241,9 @@ vendor/lib64/libtriplecam_optical_zoom_control.so
 vendor/lib64/libtriplecam_video_optical_zoom.so
 vendor/lib64/libvidhance.so
 vendor/lib64/libvl53l1_daemon.so
+vendor/lib64/libyuv_watermark.so
 vendor/lib64/sensors.hal.tof.so
+vendor/lib64/vendor.oneplus.camera.CameraMDMHIDL@1.0.so
 
 # Camera firmware
 vendor/firmware/CAMERA_ICP.elf
@@ -1148,6 +1154,14 @@ vendor/firmware/tp/LIMIT_19801_SY761.img
 vendor/firmware/tp/LIMIT_19801_SY761_NEW.img
 vendor/firmware/tp/LIMIT_19861_SY761.img
 vendor/firmware/tp/LIMIT_19861_SY761_NEW.img
+
+# Translation
+lib/vendor.oneplus.hardware.translation@1.0.so
+lib64/vendor.oneplus.hardware.translation@1.0.so
+vendor/bin/hw/vendor.oneplus.hardware.translation@1.0-service
+vendor/etc/init/vendor.oneplus.hardware.translation@1.0-service.rc
+vendor/lib/vendor.oneplus.hardware.translation@1.0.so
+vendor/lib64/vendor.oneplus.hardware.translation@1.0.so
 
 # Trusted User Interface
 vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti
