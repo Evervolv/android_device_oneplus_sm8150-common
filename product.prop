@@ -47,11 +47,6 @@ media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 vendor.swvdec.log.level=1
 vendor.vidc.debug.level=1
 
-# Memory optimizations
-ro.vendor.qti.sys.fw.bservice_age=5000
-ro.vendor.qti.sys.fw.bservice_enable=true
-ro.vendor.qti.sys.fw.bservice_limit=8
-
 # Netflix
 ro.netflix.bsp_rev=Q855-16947-1
 
