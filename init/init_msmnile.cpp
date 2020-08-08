@@ -104,14 +104,14 @@ void load_props(const char* model, int id) {
     snprintf(fingerprint, PROP_VALUE_MAX, "OnePlus/%s/%s:10/%s/%s:user/release-keys",
         BUILD_VARIANT[id], BUILD_DEVICE[id], BUILD_ID, BUILD_INC_VERSION[id]);
 
-    strcpy(variant, id > 3 ? "HD" : "GM");
-    strcat(variant, model);
+    strcpy (variant, id > 3 ? "HD" : "GM");
+    strcat (variant, model);
 
     for (const auto& source : RO_PROP_SOURCES) {
         ro_prop_override(source, "device", BUILD_DEVICE[id], true);
-        ro_prop_override(source, "fingerprint", fingerprint, false);
         ro_prop_override(source, "model", variant, true);
-        ro_prop_override(source, "name", BUILD_DEVICE[id], true);
+        ro_prop_override(source, "fingerprint", fingerprint,
+                         false);
     }
     ro_prop_override(nullptr, "description", description, false);
     ro_prop_override(nullptr, "product", BUILD_DEVICE[id], false);
