@@ -427,6 +427,11 @@ vendor/lib64/libspl.so
 vendor/lib64/libssd.so
 vendor/lib64/libStDrvInt.so
 
+# DRM - Oneplus
+vendor/bin/hw/vendor.oneplus.hardware.drmkey@1.0-service
+vendor/etc/init/vendor.oneplus.hardware.drmkey@1.0-service.rc
+vendor/lib64/vendor.oneplus.hardware.drmkey@1.0.so
+
 # DRM - Widevine
 vendor/bin/hw/android.hardware.drm@1.2-service.widevine
 vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc
