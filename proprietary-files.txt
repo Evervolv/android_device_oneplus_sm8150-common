@@ -305,6 +305,7 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile4.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml
 vendor/etc/init/cnd.rc
+vendor/lib64/libcacertclient.so
 vendor/lib64/libcne.so
 vendor/lib64/libcneapiclient.so
 vendor/lib64/libcneoplookup.so
@@ -313,6 +314,7 @@ vendor/lib64/libwms.so
 vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
 vendor/lib64/vendor.qti.data.factory@2.0.so
+vendor/lib64/vendor.qti.hardware.cacert@1.0.so
 vendor/lib64/vendor.qti.hardware.data.cne.internal.api@1.0.so
 vendor/lib64/vendor.qti.hardware.data.cne.internal.constants@1.0.so
 vendor/lib64/vendor.qti.hardware.data.cne.internal.server@1.0.so
@@ -493,16 +495,31 @@ vendor/bin/garden_app
 vendor/bin/hw/android.hardware.gnss@2.0-service-qti
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
+vendor/bin/mlid
 vendor/bin/slim_daemon
 vendor/bin/xtra-daemon
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
 vendor/etc/cacert_location.pem
 vendor/etc/init/android.hardware.gnss@2.0-service-qti.rc
-vendor/etc/vintf/manifest/android.hardware.gnss@2.0-service-qti.xml
 vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml
+vendor/etc/vintf/manifest/android.hardware.gnss@2.0-service-qti.xml
 vendor/etc/xtra_root_cert.pem
+vendor/lib/hw/android.hardware.gnss@2.0-impl-qti.so
+vendor/lib/hw/vendor.qti.gnss@3.0-impl.so
+vendor/lib/libaoa.so
+vendor/lib/libbatching.so
+vendor/lib/libgarden.so
+vendor/lib/libgeofencing.so
+vendor/lib/libgnss.so
+vendor/lib/libgnsspps.so
+vendor/lib/libgps.utils.so
+vendor/lib/libizat_client_api.so
+vendor/lib/libizat_core.so
+vendor/lib/libloc_core.so
+vendor/lib/liblocation_api.so
 vendor/lib/libslimclient.so
+vendor/lib/vendor.qti.gnss@3.0-service.so
 vendor/lib64/hw/android.hardware.gnss@2.0-impl-qti.so
 vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so
 vendor/lib64/libaoa.so
@@ -536,7 +553,6 @@ vendor/lib64/vendor.qti.gnss@2.0.so
 vendor/lib64/vendor.qti.gnss@2.1.so
 vendor/lib64/vendor.qti.gnss@3.0.so
 vendor/lib64/vendor.qti.gnss@3.0-service.so
-vendor/lib64/vendor.qti.hardware.cacert@1.0.so
 
 # Graphics
 vendor/lib/egl/eglSubDriverAndroid.so
@@ -957,7 +973,6 @@ vendor/lib64/libqcmaputils.so
 vendor/lib64/libqcrilFramework.so
 vendor/lib64/libqcbor.so
 vendor/lib64/libqcrildatactl.so
-vendor/lib64/libqdma_file_agent.so
 vendor/lib64/libqmi_csvt_srvc.so
 vendor/lib64/libqsap_sdk.so
 vendor/lib64/libqrtr.so
