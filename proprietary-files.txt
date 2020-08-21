@@ -613,6 +613,11 @@ vendor/lib64/libhbtpclient.so
 vendor/lib64/libhbtpdsp.so
 vendor/lib64/libhbtpfrmwk.so
 
+# HDCP
+vendor/bin/hw/vendor.oneplus.hardware.hdcpkey@1.0-service
+vendor/etc/init/vendor.oneplus.hardware.hdcpkey@1.0-service.rc
+vendor/lib64/vendor.oneplus.hardware.hdcpkey@1.0.so
+
 # HotwordEnrollment
 -priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk
 -priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk

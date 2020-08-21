@@ -855,6 +855,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <hal format="hidl">
+        <name>vendor.oneplus.hardware.hdcpkey</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IOneplusHdcpKey</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>vendor.oneplus.hardware.param</name>
         <transport>hwbinder</transport>
         <version>1.0</version>

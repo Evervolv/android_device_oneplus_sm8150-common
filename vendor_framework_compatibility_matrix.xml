@@ -806,6 +806,14 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.oneplus.hardware.hdcpkey</name>
+        <version>1.0</version>
+        <interface>
+            <name>IOneplusHdcpKey</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.oneplus.hardware.param</name>
         <version>1.0</version>
         <interface>
