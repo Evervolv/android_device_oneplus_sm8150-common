@@ -2,8 +2,6 @@
 audio.offload.min.duration.secs=30
 persist.vendor.audio.hac.enable=false
 ro.audio.monitorRotation=true
-vendor.audio.noisy.broadcast.delay=600
-vendor.audio.offload.pstimeout.secs=3
 
 # Bluetooth
 bt.max.hfpclient.connections=1
