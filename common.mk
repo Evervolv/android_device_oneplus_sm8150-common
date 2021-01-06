@@ -476,6 +476,10 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
+# Vendor service manager
+PRODUCT_PACKAGES += \
+    vndservicemanager
+
 # VNDK
 PRODUCT_EXTRA_VNDK_VERSIONS := 30
 PRODUCT_PACKAGES += \
