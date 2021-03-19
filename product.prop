@@ -69,6 +69,9 @@ persist.rcs.supported=0
 persist.vendor.naruto.light.support=true
 persist.vendor.sensors.enable.mag_filter=true
 
+# System Server
+arm64.memtag.process.system_server=off
+
 # WiFi
 config.disable_rtt=true
 
