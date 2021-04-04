@@ -18,8 +18,12 @@
 package org.lineageos.settings.doze;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.hardware.display.AmbientDisplayConfiguration;
 import android.util.Log;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
@@ -28,8 +32,32 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     private static final String TAG = "OnePlusDoze";
 
     @Override
-    public void onReceive(final Context context, Intent intent) {
-        if (DEBUG) Log.d(TAG, "Received boot completed intent");
-        Utils.checkDozeService(context);
+    public void onReceive(Context context, Intent intent) {
+        final boolean useSystemDoze = new AmbientDisplayConfiguration(context).dozePickupSensorAvailable();
+        if (useSystemDoze) {
+            disableComponent(context, DozeSettingsActivity.class.getName());
+        } else {
+            enableComponent(context, DozeSettingsActivity.class.getName());
+            Utils.checkDozeService(context);
+        }
+    }
+
+    private void disableComponent(Context context, String component) {
+        ComponentName name = new ComponentName(context, component);
+        PackageManager pm = context.getPackageManager();
+        pm.setComponentEnabledSetting(name,
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP);
+    }
+
+    private void enableComponent(Context context, String component) {
+        ComponentName name = new ComponentName(context, component);
+        PackageManager pm = context.getPackageManager();
+        if (pm.getComponentEnabledSetting(name)
+                == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
+            pm.setComponentEnabledSetting(name,
+                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                    PackageManager.DONT_KILL_APP);
+        }
     }
 }
