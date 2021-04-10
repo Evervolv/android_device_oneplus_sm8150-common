@@ -61,7 +61,6 @@ vendor/lib/libaudioconfigstore.so
 vendor/lib/libopf.so
 vendor/lib/libqtigef.so
 vendor/lib/libssrec.so
-vendor/lib/libtinycompress.so
 vendor/lib/vendor.qti.hardware.audiohalext@1.0.so
 vendor/lib64/libadsprpc.so
 
@@ -125,7 +124,6 @@ vendor/lib64/libarcsoft_super_night_raw.so
 vendor/lib64/libarcsoft_tricam_calibration.so
 vendor/lib64/libarcsoft_tricam_verification.so
 vendor/lib64/libc++_extra.so
-vendor/lib64/libcamera2ndk_vendor.so
 vendor/lib64/libcamera_nn_stub.so
 vendor/lib64/libcamxfdalgov7.so
 vendor/lib64/libcamxfdalgov8.so
@@ -1031,7 +1029,6 @@ vendor/firmware/ring_T-Jingle.bin
 vendor/firmware/shuntai24k_rtp.bin
 vendor/firmware/wentai24k_rtp.bin
 
-
 # VPP
 vendor/bin/vppservice
 vendor/etc/configstore/vpp.configstore.xml
@@ -1132,7 +1129,6 @@ vendor/lib/libmm-hdcpmgr.so
 vendor/lib/libmmosal.so
 vendor/lib/libmmrtpdecoder_proprietary.so
 vendor/lib/libmmrtpencoder_proprietary.so
-vendor/lib/libwfdaac_vendor.so
 vendor/lib/libwfdcodecv4l2_proprietary.so
 vendor/lib/libwfdcommonutils_proprietary.so
 vendor/lib/libwfdconfigutils_proprietary.so
