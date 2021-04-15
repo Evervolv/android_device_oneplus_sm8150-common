@@ -105,7 +105,8 @@ PRODUCT_PACKAGES += \
     libssr \
     libtinycompress \
     libvolumelistener \
-    tinymix
+    tinymix \
+    vendor.qti.hardware.audiohalext@1.0.vendor
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
