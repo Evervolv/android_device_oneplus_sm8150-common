@@ -250,10 +250,6 @@ PRODUCT_PACKAGES += \
     vendor.evervolv.biometrics.fingerprint.inscreen@1.0-service.oneplus_msmnile \
     vendor.evervolv.biometrics.fingerprint.inscreen.xml
 
-# For config.fs
-PRODUCT_PACKAGES += \
-    fs_config_files
-
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
@@ -313,11 +309,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
-
-# Misc
-PRODUCT_PACKAGES += \
-    libchrome \
-    libchrome.vendor
 
 # Net
 PRODUCT_PACKAGES += \
