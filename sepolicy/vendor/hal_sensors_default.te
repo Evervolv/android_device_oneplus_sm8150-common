@@ -47,3 +47,7 @@ get_prop(hal_sensors_default, vendor_sensors_prop)
 
 # Allow hal_sensors_default to get vendor_sensors_als_prop
 get_prop(hal_sensors_default, vendor_sensors_als_prop)
+
+# Allow hal_sensors_default to read dc_dim sysfs nodes
+allow hal_sensors_default sysfs_dc_dim:dir search;
+allow hal_sensors_default sysfs_dc_dim:file r_file_perms;
