@@ -49,3 +49,7 @@ get_prop(hal_sensors_default, vendor_sensors_prop)
 get_prop(hal_sensors_default, vendor_sensors_als_prop)
 
 allow hal_sensors_default vendor_diag_device:chr_file rw_file_perms;
+
+# Allow hal_sensors_default to read livedisplay sysfs nodes
+allow hal_sensors_default sysfs_livedisplay_tuneable:dir search;
+allow hal_sensors_default sysfs_livedisplay_tuneable:file r_file_perms;
