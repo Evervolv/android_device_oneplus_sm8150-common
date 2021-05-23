@@ -15,7 +15,9 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto" >
 
     <ListPreference
         android:key="gesture_pick_up_type"
@@ -25,5 +27,11 @@
         android:summary="%s"
         android:entries="@array/pick_up_gesture_entries"
         android:entryValues="@array/pick_up_gesture_values" />
+
+    <com.android.settingslib.widget.FooterPreference
+        android:key="gesture_footer"
+        android:selectable="false"
+        android:title="@string/doze_settings_help_text"
+        settings:allowDividerAbove="true" />
 
 </PreferenceScreen>
