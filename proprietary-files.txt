@@ -8,6 +8,7 @@ vendor/lib/libacdbrtac.so
 # ADSP
 vendor/bin/adsprpcd
 vendor/etc/init/vendor.qti.adsprpc-service.rc
+vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy
 vendor/lib/libfastcrc.so
 vendor/lib/libadsprpc.so
 vendor/lib/libmdsprpc.so
@@ -253,7 +254,7 @@ vendor/etc/qdcm_calib_data_samsung_s6e3fc2x01_cmd_mode_dsi_panel.xml
 vendor/etc/qdcm_calib_data_samsung_sofef03f_m_fhd_cmd_mode_dsc_dsi_panel.xml
 
 # DPM
-framework/tcmclient.jar
+system/framework/tcmclient.jar
 system_ext/bin/dpmd
 system_ext/etc/dpm/dpm.conf
 system_ext/etc/init/dpmd.rc
@@ -529,6 +530,8 @@ vendor/lib/libswvdec.so
 # Media (Qti)
 vendor/bin/hw/vendor.qti.media.c2@1.0-service
 vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
+vendor/etc/seccomp_policy/codec2.vendor.base.policy
+vendor/etc/seccomp_policy/codec2.vendor.ext.policy
 vendor/lib/libqcodec2.so
 
 # Media (Software)
@@ -686,7 +689,7 @@ vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 
 # Radio
--framework/qcnvitems.jar
+-system/framework/qcnvitems.jar
 -system_ext/app/DeviceInfo/DeviceInfo.apk
 -system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
 -system_ext/app/datastatusnotification/datastatusnotification.apk
@@ -727,6 +730,7 @@ vendor/etc/init/qcrild.rc
 vendor/etc/init/ssgtzd.rc
 vendor/etc/init/vendor.qti.rmt_storage.rc
 vendor/etc/init/vendor.qti.tftp.rc
+vendor/etc/seccomp_policy/atfwd@2.0.policy
 vendor/etc/ssg/ta_config.json
 vendor/etc/ssg/tz_whitelist.json
 vendor/lib/libmdmdetect.so
@@ -960,7 +964,7 @@ vendor/firmware/wentai24k_rtp.bin
 vendor/bin/cnss-daemon
 
 # WiFi Display
--framework/WfdCommon.jar
+-system/framework/WfdCommon.jar
 system_ext/bin/wfdservice
 system_ext/etc/init/wfdservice.rc
 system_ext/etc/seccomp_policy/wfdservice.policy
