@@ -80,6 +80,8 @@
         <boolean name="carrier_call_composer_supported_bool" value="false" />
         <boolean name="carrier_allow_transfer_ims_call_bool" value="true" />
         <boolean name="carrier_wfc_supports_wifi_only_bool" value="false" />
+        <boolean name="dtmf_type_enabled_bool" value="true" />
+        <boolean name="csp_enabled_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="001" mnc="01">
         <boolean name="carrier_volte_available_bool" value="true" />
