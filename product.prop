@@ -41,6 +41,9 @@ vendor.display.enable_rotator_ui=1
 # IO Prefetcher
 vendor.iop.enable_uxe=0
 
+# IORap
+persist.device_config.runtime_native_boot.iorap_perfetto_enable=true
+
 # Media
 av.offload.enable=true
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
