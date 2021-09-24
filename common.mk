@@ -244,8 +244,8 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.oneplus_msmnile \
-    vendor.evervolv.biometrics.fingerprint.inscreen@1.0-service.oneplus_msmnile \
+    android.hardware.biometrics.fingerprint@2.1-service.oneplus \
+    vendor.evervolv.biometrics.fingerprint.inscreen@1.0-service.oneplus \
     vendor.evervolv.biometrics.fingerprint.inscreen.xml
 
 # GPS
@@ -344,10 +344,10 @@ PRODUCT_PACKAGES += \
 
 # OnePlus
 PRODUCT_PACKAGES += \
-    oneplus-fwk.oneplus_msmnile
+    oneplus-fwk
 
 PRODUCT_BOOT_JARS += \
-    oneplus-fwk.oneplus_msmnile
+    oneplus-fwk
 
 # Power
 PRODUCT_PACKAGES += \
@@ -380,7 +380,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service.oneplus_msmnile
+    vendor.qti.hardware.vibrator.service.oneplus
 
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
@@ -422,12 +422,12 @@ PRODUCT_COPY_FILES += \
 
 # Touch
 PRODUCT_PACKAGES += \
-    vendor.evervolv.touch@1.0-service.oneplus_msmnile
+    vendor.evervolv.touch@1.0-service.oneplus
 
 # tri-state key
 PRODUCT_PACKAGES += \
     KeyHandler \
-    tri-state-key_daemon
+    tri-state-key_daemon.vendor
 
 # Update engine
 PRODUCT_PACKAGES += \
