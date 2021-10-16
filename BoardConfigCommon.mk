@@ -80,9 +80,6 @@ AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 AUDIO_FEATURE_ENABLED_SSR := true
 USE_CUSTOM_AUDIO_POLICY := 1
 
-# Bluetooth
-TARGET_USE_QTI_BT_STACK := true
-
 # Bootimage
 ifneq ($(filter Image.gz-dtb Image.lz4-dtb Image-dtb,$(BOARD_KERNEL_IMAGE_NAME)),)
 BOARD_BOOTIMG_HEADER_VERSION := 1
