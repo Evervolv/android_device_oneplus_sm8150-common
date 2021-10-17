@@ -16,7 +16,9 @@
         android:label="OnePlusCameraHelper"
         android:persistent="true">
 
-        <receiver android:name="org.lineageos.camerahelper.BootCompletedReceiver">
+        <receiver
+            android:name="org.lineageos.camerahelper.BootCompletedReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -24,10 +26,12 @@
         </receiver>
 
         <service android:name="org.lineageos.camerahelper.CameraMotorService"
+                 android:exported="true"
                  android:permission="OnePlusCameraHelperService">
         </service>
 
         <service android:name="org.lineageos.camerahelper.FallSensorService"
+                 android:exported="true"
                  android:permission="OnePlusCameraHelperService">
         </service>
     </application>
