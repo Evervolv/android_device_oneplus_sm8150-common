@@ -25,4 +25,12 @@
 
     <!-- Preferred refresh rate at keyguard, if supported by the display -->
     <integer name="config_keyguardRefreshRate">90</integer>
+
+    <!-- HBM type of UDFPS overlay.
+            0 - GLOBAL HBM 
+            1 - LOCAL HBM
+    -->
+    <integer name="config_udfps_hbm_type">0</integer>
+
+    <integer name="config_udfpsEnrollProgressBar" translatable="false">100</integer>
 </resources>
