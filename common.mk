@@ -445,7 +445,7 @@ PRODUCT_PACKAGES += \
 
 # Shims
 PRODUCT_PACKAGES += \
-    lib-imsvtshim
+    libgui_shim
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \

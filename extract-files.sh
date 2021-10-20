@@ -60,9 +60,10 @@ fi
 
 function blob_fixup() {
     case "${1}" in
-        system_ext/lib64/lib-imsvideocodec.so)
-            for shim in $(grep -L "lib-imsvtshim.so" "${2}"); do
-                "${PATCHELF}" --add-needed "lib-imsvtshim.so" "$shim"
+        # Fix missing symbols for IMS/Camera
+        system_ext/lib/lib-imsvideocodec.so | system_ext/lib/libimsmedia_jni.so | system_ext/lib64/lib-imsvideocodec.so | system_ext/lib64/libimsmedia_jni.so)
+            for shim in $(grep -L "libgui_shim.so" "${2}"); do
+                "${PATCHELF}" --add-needed "libgui_shim.so" "${shim}"
             done
             ;;
         system_ext/lib64/libwfdnative.so)
