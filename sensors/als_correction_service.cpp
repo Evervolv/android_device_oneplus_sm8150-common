@@ -43,7 +43,7 @@ void updateScreenBuffer() {
 
     struct timespec now;
     clock_gettime(CLOCK_MONOTONIC, &now);
-    IScreenCaptureListener *captureListener;
+    sp<IScreenCaptureListener> captureListener;
     ScreenCaptureResults captureResults;
 
     if (now.tv_sec - lastScreenUpdate >= SCREENSHOT_INTERVAL) {
