@@ -1,0 +1,1 @@
+allow ueventd persist_wlan_file:file r_file_perms;
