@@ -15,6 +15,7 @@
  */
 
 #include <android-base/properties.h>
+#include <binder/ProcessState.h>
 #include <gui/SurfaceComposerClient.h>
 #include <gui/SyncScreenCaptureListener.h>
 
@@ -25,6 +26,7 @@
 
 using android::base::SetProperty;
 using android::GraphicBuffer;
+using android::ProcessState;
 using android::Rect;
 using android::ScreenshotClient;
 using android::sp;
@@ -89,6 +91,9 @@ void updateScreenBuffer() {
 }
 
 int main() {
+    ProcessState::self()->setThreadPoolMaxThreadCount(0);
+    ProcessState::self()->startThreadPool();
+
     struct sigaction action{};
     sigfillset(&action.sa_mask);
 
