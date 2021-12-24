@@ -67,7 +67,6 @@
 /sys/module/fsc(/.*)?                                              u:object_r:sysfs_fsc:s0
 /sys/module/stmvl53l1(/.*)?                                        u:object_r:sysfs_vl53l1:s0
 /sys/project_info(/.*)?                                            u:object_r:sysfs_project_info:s0
-/sys/class/power_supply/battery/fastchg_status                     u:object_r:vendor_sysfs_battery_supply:s0
 
 # Sys files (wakeup)
 /sys/devices(/platform)?/soc/(soc:gpio_keys|a600000.ssusb|soc:gpio_keys|18800000.qcom,icnss|88e0000.qcom,msm-eud)/wakeup/wakeup[0-9]+(/.*)? u:object_r:sysfs_wakeup:s0
