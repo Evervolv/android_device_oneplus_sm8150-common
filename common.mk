@@ -253,9 +253,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.3-service.oneplus \
-    vendor.evervolv.biometrics.fingerprint.inscreen@1.0-service.oneplus \
-    vendor.evervolv.biometrics.fingerprint.inscreen.xml
+    android.hardware.biometrics.fingerprint@2.3-service.oneplus
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
