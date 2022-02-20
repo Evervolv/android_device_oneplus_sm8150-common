@@ -436,7 +436,8 @@ PRODUCT_PACKAGES += \
     als_correction_service.oneplus_msmnile \
     android.frameworks.sensorservice@1.0.vendor \
     android.hardware.sensors@2.1-service.oneplus_msmnile \
-    libsensorndkbridge
+    libsensorndkbridge \
+    sensors.oneplus
 
 # Servicetracker
 PRODUCT_PACKAGES += \

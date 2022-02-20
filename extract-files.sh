@@ -74,6 +74,11 @@ function blob_fixup() {
                 "${PATCHELF}" --add-needed "libril_shim.so" "$shim"
             done
             ;;
+        vendor/etc/sensors/hals.conf)
+            for shim in $(grep -L "sensors.oneplus.so" "${2}"); do
+                echo "sensors.oneplus.so" >> "$shim"
+            done
+            ;;
     esac
 }
 
