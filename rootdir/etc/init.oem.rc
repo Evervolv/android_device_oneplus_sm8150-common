@@ -400,10 +400,10 @@ on boot
     chown system system /sys/devices/platform/soc/soc:fingerprint_detect/sensor_version
     chmod 0666 /proc/touchpanel/touch_hold
     chown system system /proc/touchpanel/touch_hold
-    chmod 0664 sys/devices/platform/soc/soc:goodix_fp/screen_state
-    chown system system sys/devices/platform/soc/soc:goodix_fp/screen_state
-    chmod 0664 sys/devices/platform/soc/soc:goodix_fp/proximity_state
-    chown system system sys/devices/platform/soc/soc:goodix_fp/proximity_state
+    chmod 0664 /sys/devices/platform/soc/soc:goodix_fp/screen_state
+    chown system system /sys/devices/platform/soc/soc:goodix_fp/screen_state
+    chmod 0664 /sys/devices/platform/soc/soc:goodix_fp/proximity_state
+    chown system system /sys/devices/platform/soc/soc:goodix_fp/proximity_state
     chmod 0666 /dev/qseecom
 
     chmod 0666 /dev/pn553
@@ -433,16 +433,10 @@ on boot
     chmod 666 /dev/input/event10
     chmod 666 /dev/input/event11
 
-    chmod 0666 /sys/devices/platform/soc/soc:fingerprint_detect/sensor_version
-    chown system system /sys/devices/platform/soc/soc:fingerprint_detect/sensor_version
     chmod 0664 /sys/devices/platform/soc/a90000.i2c/i2c-4/4-0020/fp_irq
     chown system system /sys/devices/platform/soc/a90000.i2c/i2c-4/4-0020/fp_irq
     chmod 0666 /proc/touchpanel/touch_hold
     chown system system /proc/touchpanel/touch_hold
-    chmod 0664 sys/devices/platform/soc/soc:goodix_fp/screen_state
-    chown system system sys/devices/platform/soc/soc:goodix_fp/screen_state
-    chmod 0666 /dev/qseecom
-    chmod 0666 /dev/goodix_fp
 
     chown system system /sys/devices/platform/vendor/vendor:infrared_pl/infrared_power_enable
     chmod 0666 /sys/devices/platform/vendor/vendor:infrared_pl/infrared_power_enable                #for infrared proximity sensor
