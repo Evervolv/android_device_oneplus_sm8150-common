@@ -477,6 +477,11 @@ PRODUCT_PACKAGES += \
 
 # VNDK
 PRODUCT_EXTRA_VNDK_VERSIONS := 30
+PRODUCT_PACKAGES += \
+    evervolv_compatibility_matrix.xml \
+    lineage_compatibility_matrix.xml \
+    oneplus_compatibility_matrix.xml \
+    qcom_compatibility_matrix.xml
 
 # Wifi
 PRODUCT_PACKAGES += \
