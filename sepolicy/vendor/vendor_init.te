@@ -26,3 +26,6 @@ get_prop(vendor_init, vendor_tee_listener_prop)
 
 # Allow vendor_init to handle symlinks for block_device
 allow vendor_init block_device:lnk_file setattr;
+
+# Allow vendor_init to set vendor_power_prop
+set_prop(vendor_init, vendor_power_prop)
