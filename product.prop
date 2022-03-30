@@ -38,9 +38,6 @@ ro.surface_flinger.set_display_power_timer_ms=1000
 ro.surface_flinger.use_smart_90_for_video=true
 vendor.display.enable_rotator_ui=1
 
-# IO Prefetcher
-vendor.iop.enable_uxe=0
-
 # IORap
 persist.device_config.runtime_native_boot.iorap_perfetto_enable=true
 
@@ -53,9 +50,6 @@ vendor.vidc.debug.level=1
 
 # Netflix
 ro.netflix.bsp_rev=Q855-16947-1
-
-# Perf
-ro.vendor.qti.sys.fw.bg_apps_limit=60
 
 # Radio
 DEVICE_PROVISIONED=1
