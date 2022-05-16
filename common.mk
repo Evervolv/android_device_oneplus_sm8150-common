@@ -346,13 +346,13 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    NfcNci \
-    Tag \
-    SecureElement \
     android.hardware.nfc@1.2-service \
     android.hardware.secure_element@1.1-service-disabled \
-    android.hardware.secure_element@1.1.vendor \
     android.hardware.secure_element@1.2.vendor \
+    com.android.nfc_extras \
+    NfcNci \
+    Tag \
+    SecureElement
 
 # OMX
 PRODUCT_PACKAGES += \
