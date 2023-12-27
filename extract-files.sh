@@ -72,6 +72,10 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             grep -q libshims_fingerprint.oplus.so "${2}" || "${PATCHELF}" --add-needed libshims_fingerprint.oplus.so "${2}"
             ;;
+        odm/etc/init/android.hardware.drm@1.3-service.widevine.rc|vendor/etc/init/vendor.qti.media.c2@1.0-service.rc)
+            [ "$2" = "" ] && return 0
+            sed -i "s|writepid /dev/cpuset/foreground/tasks|task_profiles ProcessCapacityHigh|g" "${2}"
+            ;;
         odm/etc/vintf/manifest/manifest_oplus_fingerprint.xml)
             [ "$2" = "" ] && return 0
             sed -ni "/android.hardware.biometrics.fingerprint/{x;s/hal format/hal override=\"true\" format/;x};x;1!p;\${x;p}" "${2}"
