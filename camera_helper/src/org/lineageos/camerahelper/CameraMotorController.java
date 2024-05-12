@@ -6,11 +6,12 @@
 
 package org.lineageos.camerahelper;
 
-import android.os.FileUtils;
-import android.text.TextUtils;
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class CameraMotorController {
@@ -19,7 +20,7 @@ public class CameraMotorController {
     // Camera motor paths
     private static final String CAMERA_MOTOR_ENABLE_PATH =
             "/sys/class/motor/enable";
-    public static final String CAMERA_MOTOR_HALL_CALIBRATION =
+    private static final String CAMERA_MOTOR_HALL_CALIBRATION =
             "/sys/class/motor/hall_calibration";
     private static final String CAMERA_MOTOR_DIRECTION_PATH =
             "/sys/class/motor/direction";
@@ -27,63 +28,51 @@ public class CameraMotorController {
             "/sys/class/motor/position";
 
     // Motor calibration data path
-    public static final String CAMERA_PERSIST_HALL_CALIBRATION =
+    private static final String CAMERA_PERSIST_HALL_CALIBRATION =
             "/mnt/vendor/persist/engineermode/hall_calibration";
 
     // Motor fallback calibration data
-    public static final String HALL_CALIBRATION_DEFAULT =
+    private static final String HALL_CALIBRATION_DEFAULT =
             "170,170,480,0,0,480,500,0,0,500,1500";
-
-    // Motor control values
-    public static final String DIRECTION_DOWN = "0";
-    public static final String DIRECTION_UP = "1";
-    public static final String ENABLED = "1";
-    public static final String POSITION_DOWN = "1";
-    public static final String POSITION_UP = "0";
 
     private CameraMotorController() {
         // This class is not supposed to be instantiated
     }
 
+    private static void writeFile(String path, String data) {
+        try (FileWriter fileWriter = new FileWriter(path)) {
+            fileWriter.write(data);
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to write to " + path, e);
+        }
+    }
+
+    private static String readFile(String path) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            return reader.readLine();
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to read from " + path, e);
+            return null;
+        }
+    }
+
     public static void calibrate() {
         String calibrationData = HALL_CALIBRATION_DEFAULT;
-
-        try {
-            calibrationData = FileUtils.readTextFile(
-                    new File(CAMERA_PERSIST_HALL_CALIBRATION), 0, null);
+        try (BufferedReader reader = new BufferedReader(new FileReader(CAMERA_PERSIST_HALL_CALIBRATION))) {
+            calibrationData = reader.readLine();
         } catch (IOException e) {
-            Log.e(TAG, "Failed to read " + CAMERA_PERSIST_HALL_CALIBRATION, e);
+            Log.e(TAG, "Failed to read from " + CAMERA_PERSIST_HALL_CALIBRATION, e);
         }
 
-        try {
-            FileUtils.stringToFile(CAMERA_MOTOR_HALL_CALIBRATION, calibrationData);
-        } catch (IOException e) {
-            Log.e(TAG, "Failed to write to " + CAMERA_MOTOR_HALL_CALIBRATION, e);
-        }
-    }
-
-    public static void setMotorDirection(String direction) {
-        try {
-            FileUtils.stringToFile(CAMERA_MOTOR_DIRECTION_PATH, direction);
-        } catch (IOException e) {
-            Log.e(TAG, "Failed to write to " + CAMERA_MOTOR_DIRECTION_PATH, e);
-        }
-    }
-
-    public static void setMotorEnabled() {
-        try {
-            FileUtils.stringToFile(CAMERA_MOTOR_ENABLE_PATH, ENABLED);
-        } catch (IOException e) {
-            Log.e(TAG, "Failed to write to " + CAMERA_MOTOR_ENABLE_PATH, e);
-        }
+        writeFile(CAMERA_MOTOR_HALL_CALIBRATION, calibrationData);
     }
 
     public static String getMotorPosition() {
-        try {
-            return FileUtils.readTextFile(new File(CAMERA_MOTOR_POSITION_PATH), 1, null);
-        } catch (IOException e) {
-            Log.e(TAG, "Failed to read " + CAMERA_MOTOR_POSITION_PATH, e);
-        }
-        return null;
+        return readFile(CAMERA_MOTOR_POSITION_PATH);
+    }
+
+    public static void setMotorDirection(String direction) {
+        writeFile(CAMERA_MOTOR_DIRECTION_PATH, direction);
+        writeFile(CAMERA_MOTOR_ENABLE_PATH, "1");
     }
 }
