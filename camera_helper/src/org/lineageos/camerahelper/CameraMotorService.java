@@ -8,7 +8,10 @@ package org.lineageos.camerahelper;
 
 import android.annotation.NonNull;
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.hardware.camera2.CameraManager;
 import android.os.Handler;
 import android.os.IBinder;
@@ -28,6 +31,8 @@ public class CameraMotorService extends Service implements Handler.Callback {
     public static final int MSG_CAMERA_OPEN = 1001;
 
     private Handler mHandler = new Handler(this);
+    private CameraManager mCameraManager;
+    private FallSensor mFallSensor;
 
     private long mClosedEvent;
     private long mOpenEvent;
@@ -65,23 +70,48 @@ public class CameraMotorService extends Service implements Handler.Callback {
                 }
             };
 
+    private BroadcastReceiver mScreenStateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(Intent.ACTION_SCREEN_ON)) {
+                if (DEBUG) Log.d(TAG, "Screen on, enabling fall sensor");
+                mFallSensor.enable();
+            } else if (action.equals(Intent.ACTION_SCREEN_OFF)) {
+                if (DEBUG) Log.d(TAG, "Screen off, disabling fall sensor");
+                mFallSensor.disable();
+            }
+        }
+    };
+
     @Override
     public void onCreate() {
         CameraMotorController.calibrate();
 
-        CameraManager cameraManager = getSystemService(CameraManager.class);
-        cameraManager.registerAvailabilityCallback(mAvailabilityCallback, null);
+        mCameraManager = getSystemService(CameraManager.class);
+        mCameraManager.registerAvailabilityCallback(mAvailabilityCallback, null);
+
+        mFallSensor = new FallSensor(this);
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        intentFilter.addAction(Intent.ACTION_SCREEN_ON);
+        registerReceiver(mScreenStateReceiver, intentFilter);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (DEBUG) Log.d(TAG, "Starting service");
+        mFallSensor.enable();
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
         if (DEBUG) Log.d(TAG, "Destroying service");
+        mFallSensor.disable();
+        unregisterReceiver(mScreenStateReceiver);
+        mCameraManager.unregisterAvailabilityCallback(mAvailabilityCallback);
         super.onDestroy();
     }
 
@@ -94,12 +124,10 @@ public class CameraMotorService extends Service implements Handler.Callback {
     public boolean handleMessage(Message msg) {
         switch (msg.what) {
             case MSG_CAMERA_CLOSED:
-                CameraMotorController.setMotorDirection(CameraMotorController.DIRECTION_DOWN);
-                CameraMotorController.setMotorEnabled();
+                CameraMotorController.setMotorDirection("0");
                 break;
             case MSG_CAMERA_OPEN:
-                CameraMotorController.setMotorDirection(CameraMotorController.DIRECTION_UP);
-                CameraMotorController.setMotorEnabled();
+                CameraMotorController.setMotorDirection("1");
                 break;
         }
         return true;

@@ -23,12 +23,8 @@ public class KeyHandler implements DeviceKeyHandler {
 
     // Camera motor event key codes
     private static final int MOTOR_EVENT_MANUAL_TO_DOWN = 184;
-    private static final int MOTOR_EVENT_UP = 185;
     private static final int MOTOR_EVENT_UP_ABNORMAL = 186;
-    private static final int MOTOR_EVENT_UP_NORMAL = 187;
-    private static final int MOTOR_EVENT_DOWN = 188;
     private static final int MOTOR_EVENT_DOWN_ABNORMAL = 189;
-    private static final int MOTOR_EVENT_DOWN_NORMAL = 190;
 
     private final Context mContext;
 
@@ -41,112 +37,75 @@ public class KeyHandler implements DeviceKeyHandler {
 
         switch (scanCode) {
             case MOTOR_EVENT_MANUAL_TO_DOWN:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    showCameraMotorPressWarning();
-                }
-                break;
             case MOTOR_EVENT_UP_ABNORMAL:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    showCameraMotorCannotGoUpWarning();
-                }
-                break;
             case MOTOR_EVENT_DOWN_ABNORMAL:
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    showCameraMotorCannotGoDownWarning();
+                    if (scanCode == MOTOR_EVENT_MANUAL_TO_DOWN) {
+                        closeAllApps();
+                    }
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        AlertDialog alertDialog = showCameraMotorWarning(scanCode);
+                        if (alertDialog != null) {
+                            alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+                            alertDialog.setCanceledOnTouchOutside(false);
+                            alertDialog.show();
+                        }
+                    });
                 }
-                break;
+                return null;
             default:
                 return event;
         }
-
-        return null;
     }
 
-    private Context getPackageContext() {
-        try {
-            return mContext.createPackageContext("org.lineageos.camerahelper", 0);
-        } catch (NameNotFoundException | SecurityException e) {
-            Log.e(TAG, "Failed to create package context", e);
-        }
-        return null;
-    }
-
-    private void showCameraMotorCannotGoDownWarning() {
-        // Show the alert
-        new Handler(Looper.getMainLooper()).post(() -> {
-            Context packageContext = getPackageContext();
-            if (packageContext != null) {
-                AlertDialog alertDialog = new AlertDialog.Builder(packageContext)
-                        .setTitle(R.string.warning)
-                        .setMessage(R.string.motor_cannot_go_down_message)
-                        .setPositiveButton(R.string.retry, (dialog, which) -> {
-                            // Close the camera
-                            CameraMotorController.setMotorDirection(
-                                    CameraMotorController.DIRECTION_DOWN);
-                            CameraMotorController.setMotorEnabled();
-                        })
-                        .create();
-                alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-                alertDialog.setCanceledOnTouchOutside(false);
-                alertDialog.show();
-            }
-        });
-    }
-
-    private void showCameraMotorCannotGoUpWarning() {
-        // Show the alert
-        new Handler(Looper.getMainLooper()).post(() -> {
-            Context packageContext = getPackageContext();
-            if (packageContext != null) {
-                AlertDialog alertDialog = new AlertDialog.Builder(packageContext)
-                        .setTitle(R.string.warning)
-                        .setMessage(R.string.motor_cannot_go_up_message)
-                        .setNegativeButton(R.string.retry, (dialog, which) -> {
-                            // Reopen the camera
-                            CameraMotorController.setMotorDirection(
-                                    CameraMotorController.DIRECTION_UP);
-                            CameraMotorController.setMotorEnabled();
-                        })
-                        .setPositiveButton(R.string.close, (dialog, which) -> {
-                            // Close the camera
-                            CameraMotorController.setMotorDirection(
-                                    CameraMotorController.DIRECTION_DOWN);
-                            CameraMotorController.setMotorEnabled();
-
-                            // Go back to home screen
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.addCategory(Intent.CATEGORY_HOME);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            mContext.startActivity(intent);
-                        })
-                        .create();
-                alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-                alertDialog.setCanceledOnTouchOutside(false);
-                alertDialog.show();
-            }
-        });
-    }
-
-    private void showCameraMotorPressWarning() {
+    private void closeAllApps() {
         // Go back to home to close all camera apps first
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
+    }
 
-        // Show the alert
-        new Handler(Looper.getMainLooper()).post(() -> {
-            Context packageContext = getPackageContext();
-            if (packageContext != null) {
-                AlertDialog alertDialog = new AlertDialog.Builder(packageContext)
-                        .setTitle(R.string.warning)
-                        .setMessage(R.string.motor_press_message)
-                        .setPositiveButton(android.R.string.ok, null)
-                        .create();
-                alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-                alertDialog.setCanceledOnTouchOutside(false);
-                alertDialog.show();
-            }
-        });
+    private AlertDialog showCameraMotorWarning(int scanCode) {
+        Context packageContext = null;
+        try {
+            packageContext = mContext.createPackageContext("org.lineageos.camerahelper", 0);
+        } catch (NameNotFoundException | SecurityException e) {
+            Log.e(TAG, "Failed to create package context", e);
+        }
+
+        if (packageContext != null)
+            return null;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(packageContext);
+        switch (scanCode) {
+            case MOTOR_EVENT_MANUAL_TO_DOWN:
+                builder.setTitle(R.string.warning);
+                builder.setMessage(R.string.motor_press_message);
+                builder.setPositiveButton(android.R.string.ok, null);
+                break;
+            case MOTOR_EVENT_UP_ABNORMAL:
+                builder.setTitle(R.string.warning);
+                builder.setMessage(R.string.motor_cannot_go_up_message);
+                builder.setNegativeButton(R.string.retry, (dialog, which) -> {
+                    CameraMotorController.setMotorDirection("1");
+                });
+                builder.setPositiveButton(R.string.close, (dialog, which) -> {
+                    CameraMotorController.setMotorDirection("0");
+                    closeAllApps();
+                });
+                break;
+            case MOTOR_EVENT_DOWN_ABNORMAL:
+                builder.setTitle(R.string.warning);
+                builder.setMessage(R.string.motor_cannot_go_down_message);
+                builder.setPositiveButton(R.string.retry, (dialog, which) -> {
+                    // Close the camera
+                    CameraMotorController.setMotorDirection("0");
+                });
+                break;
+            default:
+                return null;
+        }
+        return builder.create();
     }
 }

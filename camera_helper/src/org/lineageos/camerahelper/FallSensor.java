@@ -55,13 +55,12 @@ public class FallSensor implements SensorEventListener {
         Log.d(TAG, "Fall detected, ensuring front camera is closed");
 
         // We shouldn't really bother doing anything if motor is already closed
-        if (CameraMotorController.getMotorPosition().equals(CameraMotorController.POSITION_DOWN)) {
+        if (CameraMotorController.getMotorPosition().equals(1)) {
             return;
         }
 
         // Close the camera
-        CameraMotorController.setMotorDirection(CameraMotorController.DIRECTION_DOWN);
-        CameraMotorController.setMotorEnabled();
+        CameraMotorController.setMotorDirection("0");
 
         // Show alert dialog informing user that we closed the camera
         new Handler(Looper.getMainLooper()).post(() -> {
@@ -70,8 +69,7 @@ public class FallSensor implements SensorEventListener {
                     .setMessage(R.string.free_fall_detected_message)
                     .setNegativeButton(R.string.raise_the_camera, (dialog, which) -> {
                         // Reopen the camera
-                        CameraMotorController.setMotorDirection(CameraMotorController.DIRECTION_UP);
-                        CameraMotorController.setMotorEnabled();
+                        CameraMotorController.setMotorDirection("1");
                     })
                     .setPositiveButton(R.string.close, (dialog, which) -> {
                         // Go back to home screen
