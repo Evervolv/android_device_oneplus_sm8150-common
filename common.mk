@@ -118,11 +118,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service
 
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-
-# Doze
-PRODUCT_PACKAGES += \
-    OplusDoze
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
 
 # DRM
 PRODUCT_PACKAGES += \
