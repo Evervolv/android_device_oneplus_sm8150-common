@@ -1,0 +1,16 @@
+//
+// Copyright (C) 2021-2024 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+prebuilt_usr_keylayout {
+    name: "gf_input.kl",
+    src: "gf_input.kl",
+    vendor: true,
+}
+
+prebuilt_usr_keylayout {
+    name: "gpio-keys.kl",
+    src: "gpio-keys.kl",
+    vendor: true,
+}

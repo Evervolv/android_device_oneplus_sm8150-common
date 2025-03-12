@@ -191,9 +191,9 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 # Input
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/gf_input.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gf_input.kl \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl
+PRODUCT_PACKAGES += \
+    gf_input.kl \
+    gpio-keys.kl
 
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
